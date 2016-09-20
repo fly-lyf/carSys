@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<words>
+    <performance name="座椅"  table="Seats">
+       	<word code="ZY">座椅</word>
+       	<word code="HPZY">后排座椅</word>
+       	<word code="HZ">后座</word>
+       	<word code="QPZY">前排座椅</word>
+       	<word code="QZ">前座</word>
+		<word code="ZW">座位</word>
+    </performance>
+    <performance name="动力" table="Power">
+       	<word code="ML">马力</word>
+       	<word code="DL">动力</word>
+		<word code="JS">加速</word>
+		<word code="TS">提速</word>
+    </performance>
+    <performance name="大众" table="dazhong">
+       	<word code="ML">大众</word>
+       	<word code="DL">神车</word>
+    </performance>
+    <performance name="外观" table="Appearance">
+		<word code="WG">外观</word>
+      	<word code="WX">外形</word>
+       	<word code="ZX">造型</word>
+    </performance>
+    <performance name="噪音" table="Noise">
+       	<word code="ZY">噪音</word>
+       	<word code="SY">声音</word>
+		<word code="GY">隔音</word>
+    </performance>
+	 <performance name="空间" table="Space">
+       	<word code="KJ">空间</word>
+       	<word code="RJ">容积</word>
+    </performance>
+	<performance name="售后" table="customerService">
+       	<word code="WX">维修</word>
+       	<word code="SH">售后</word>
+		<word code="BX">保修</word>
+		<word code="BXQ">保修期</word>
+		<word code="FW">服务</word>
+    </performance>
+	<performance name="离合" table="Clutch">
+       	<word code="LHQ">离合器</word>
+       	<word code="LH">离合</word>
+    </performance>
+	<performance name="性能" table="Performances">
+		<word code="XN">性能</word>
+       	<word code="ZL">质量</word>
+		<word code="JS">技术</word>
+		<word code="CK">操控</word>
+    </performance>
+	<performance name="车灯" table="Light">
+		<word code="CD">车灯</word>
+       	<word code="DD">大灯</word>
+       	<word code="WD">雾灯</word>
+		<word code="DCD">倒车灯</word>
+		<word code="QD">前灯</word>
+    </performance>
+	<performance name="标志" table="Mark">
+       	<word code="CB">车标</word>
+       	<word code="BZ">标志</word>
+    </performance>
+	<performance name="减震" table="Shockabsorber">
+		<word code="JZ">减震</word>
+       	<word code="BZ">避震</word>
+    </performance>
+	<performance name="整车参数" table="Vehicleparam">
+		<word code="ZBZL">装备质量</word>
+		<word code="ZCZBZL">整车装备质量</word>
+		<word code="ZDZZL">最大总质量</word>
+		<word code="ZDZZZL">最大装载质量</word>
+		<word code="ZDZZZL">最大装载重量</word>
+		<word code="ZZZL">装载重量</word>
+		<word code="ZDZZZL">最大轴载质量</word>
+		<word code="ZZ">轴载</word>
+		<word code="ZXLDJX">最小离地间隙</word>
+		<word code="MZ">满载</word>
+		<word code="JJJ">接近角</word>
+		<word code="LQJ">离去角</word>
+		<word code="ZGCS">最高车速</word>
+		<word code="ZDPPD">最大爬坡度</word>
+ 	</performance>
+	<performance name="随车工具" table="Vehicletool">
+		<word code="SCGJ">随车工具</word>
+ 	</performance>
+	<performance name="底盘" table="Chassis">
+		<word code="DP">底盘</word>
+ 	</performance>
+	<performance name="备胎" table="Sparetire">
+		<word code="BT">备胎</word>
+		<word code="BYLT">备用轮胎</word>
+		<word code="BYT">备用胎</word>
+ 	</performance>
+	<performance name="车辆尺寸" table="Measure">
+		<word code="CSC">车身长</word>
+		<word code="CC">车长</word>
+		<word code="CK">车宽</word>
+		<word code="CSK">车身宽</word>
+		<word code="CG">车高</word>
+ 	</performance>
+	<performance name="车轴" table="Axis">
+		<word code="ZJ">轴距</word>
+		<word code="QZ">前轴</word>
+		<word code="HZ">后轴</word>
+ 	</performance>
+	<performance name="悬挂" table="Suspension">
+		<word code="XG">悬挂</word>
+		<word code="QXG">前悬挂</word>
+		<word code="HXG">后悬挂</word>
+		<word code="QX">前悬</word>
+		<word code="HX">后悬</word>
+ 	</performance>
+	<performance name="转弯" table="Turn">
+		<word code="ZW">转弯</word>
+		<word code="ZWBJ">转弯半径</word>
+		<word code="ZXZWZJ">最小转弯直径</word>
+		<word code="ZJ">直径</word>
+		<word code="BJ">半径</word>
+ 	</performance>
+	<performance name="油耗" table="Fuelconsumption">
+		<word code="PJRLXHL">平均燃料消耗量</word>
+		<word code="YH">油耗</word>
+		<word code="PJYH">平均油耗</word>
+		<word code="SY">烧油</word>
+		<word code="FY">费油</word>
+ 	</performance>
+	<performance name="车轮" table="Wheel">
+		<word code="CL">车轮</word>
+		<word code="SY">轮毂</word>
+		<word code="QL">前轮</word>
+		<word code="HL">后轮</word>
+		<word code="LTTM">轮胎胎面</word>
+		<word code="LT">轮胎</word>
+		<word code="TM">胎面</word>
+		<word code="LJ">轮距</word>
+ 	</performance>
+	<performance name="驱动" table="Driver">
+		<word code="QDL">驱动轮</word>
+		<word code="ZDL">主动轮</word>
+		<word code="CDL">从动轮</word>
+		<word code="QLQD">前轮驱动</word>
+		<word code="HLQD">后轮驱动</word>
+		<word code="SLQD">四轮驱动</word>
+		<word code="SQ">四驱</word>
+		<word code="HQ">后驱</word>
+		<word code="QQ">前驱</word>
+		<word code="WD">WD</word>
+ 	</performance>
+	<performance name="发动机性能" table="Engineperformance">
+	<word code="NL">扭力</word>
+	<word code="NJ">扭矩</word>
+	<word code="GL">功率</word>
+	<word code="MF">密封</word>
+ 	</performance>
+	<performance name="变速箱" table="Gearbox">
+		<word code="BSX">变速箱</word>
+		<word code="BS">变速</word>
+		<word code="D">档</word>
+		<word code="D">挡</word>
+ 	</performance>
+	<performance name="防死锁刹车系统" table="ABS">
+		<word code="FSSSCXT">防死锁刹车系统</word>
+		<word code="FSSXJXT">防死锁循迹系统</word>
+		<word code="FBSXT">防抱死系统</word>
+		<word code="FBS">防抱死</word>
+		<word code="ABS">ABS</word>
+ 	</performance>
+	<performance name="车载自动诊断系统" table="OBD">
+		<word code="CZZDZD">车载自动诊断系统</word>
+		<word code="OBD">OBD</word>
+		<word code="ZDZD">自动诊断</word>
+ 	</performance>
+	<performance name="汽车自检" table="Selfcheck">
+		<word code="QCZJ">汽车自检</word>
+		<word code="ZJ">自检</word>
+		<word code="CZZJ">车载自检</word>
+ 	</performance>
+	<performance name="驱动防滑系统" table="ASR">
+		<word code="QDFHXT">驱动防滑系统</word>
+		<word code="TCS">TCS</word>
+		<word code="ASR">ASR</word>
+		<word code="QYLKZXT">牵引力控制系统</word>
+		<word code="JSFHXT">加速防滑系统</word>
+		<word code="JSFHKZQ">加速防滑控制器</word>
+		<word code="FHKZXT">防滑控制系统</word>
+		<word code="QCFHXT">汽车防滑系统</word>
+		<word code="FHXT">防滑系统</word>
+ 	</performance>
+	<performance name="防滑" table="Antiskid">
+		<word code="FH">防滑</word>
+		<word code="DH">打滑</word>
+		<word code="FDH">防打滑</word>
+ 	</performance>
+	<performance name="涡轮增压" table="Turbo">
+		<word code="ZY">增压</word>
+		<word code="WLZY">涡轮增压</word>
+ 	</performance>
+	<performance name="气门" table="Valve">
+		<word code="QM">气门</word>
+ 	</performance>
+	<performance name="气缸" table="Cylinder">
+		<word code="QG">气缸</word>
+		<word code="QGPL">气缸排列</word>
+ 	</performance>
+	<performance name="化油器" table="Carburetor">
+		<word code="HYQ">化油器</word>
+ 	</performance>
+	<performance name="挺柱" table="Tappet">
+		<word code="TZ">挺柱</word>
+ 	</performance>
+	<performance name="涡轮" table="Turbine">
+		<word code="WL">涡轮</word>
+ 	</performance>
+	<performance name="摇臂轴" table="Rockershaft">
+		<word code="YBZ">摇臂轴</word>
+ 	</performance>
+	<performance name="电喷" table="EFI">
+		<word code="DP">电喷</word>
+		<word code="DDDP">多点电喷</word>
+ 	</performance>
+	<performance name="凸轮轴" table="Camshaft">
+		<word code="TLZ">凸轮轴</word>	
+		<word code="DZTLZ">顶置凸轮轴</word>
+		<word code="SDZTLZ">双顶置凸轮轴</word>
+ 	</performance>
+	<performance name="车型" table="Model">
+		<word code="HD">混动</word>
+		<word code="HHDLQC">混合动力汽车</word>
+		<word code="DYTQC">多用途汽车</word>
+		<word code="SUV">SUV</word>
+		<word code="FC">房车</word>
+		<word code="JC">轿车</word>
+		<word code="YYC">越野车</word>
+		<word code="SDC">山地车</word>
+		<word code="YDQC">运动汽车</word>
+		<word code="XXC">休闲车</word>
+ 	</performance>
+	<performance name="汽车导航系统" table="GPS">
+		<word code="QCDHXT">汽车导航系统</word>
+		<word code="GPS">GPS</word>
+		<word code="QQDWXT">全球定位系统</word>
+ 	</performance>
+	<performance name="车身电子稳定系统" table="ESP">
+		<word code="CSDZWDXT">车身电子稳定系统</word>
+		<word code="DZWDCX">电子稳定程序</word>
+		<word code="DZWDZZ">电子稳定装置</word>
+		<word code="ESP">ESP</word>
+ 	</performance>
+	<performance name="甩尾" table="Flick">
+		<word code="SW">甩尾</word>
+ 	</performance>
+	<performance name="牵引" table="Tow">
+		<word code="QY">牵引</word>
+ 	</performance>
+	<performance name="激转" table="Sharpturn">
+		<word code="JZ">激转</word>
+ 	</performance>
+	<performance name="侧滑" table="Sideslip">
+		<word code="CH">侧滑</word>
+		<word code="HZCH">后轴侧滑</word>
+ 	</performance>
+	<performance name="废气循环" table="Gascirculation">
+		<word code="FQXH">废气循环</word>
+		<word code="FQZXH">废气再循环</word>
+		<word code="WQXH">尾气循环</word>
+ 	</performance>
+	<performance name="电子制动力分配系统" table="EDB">
+		<word code="DZZDLFPXT">电子制动力分配系统</word>
+		<word code="EDB">EDB</word>
+		<word code="CDZDLPH">电子动力平衡</word>
+ 	</performance>
+	<performance name="自动制动差速器" table="ABD">
+		<word code="ZDZDCSQ">自动制动差速器</word>
+		<word code="ABD">ABD</word>
+ 	</performance>
+	<performance name="安全气囊" table="Airbag">
+		<word code="AQQN">安全气囊</word>
+		<word code="QN">气囊</word>
+ 	</performance>
+	<performance name="车身主动控制系统" table="ABC">
+		<word code="CSZDKZXT">车身主动控制系统</word>
+		<word code="ABC">ABC</word>
+ 	</performance>
+	<performance name="碳氢化合物" table="CH">
+		<word code="TQHHW">碳氢化合物</word>
+		<word code="TQ">碳氢</word>
+ 	</performance>
+	<performance name="氮氧化物" table="NO">
+		<word code="DYHW">氮氧化物</word>
+		<word code="DY">氮氧</word>
+ 	</performance>
+	<performance name="制动" table="Brake">
+		<word code="ZDQ">制动器</word>
+		<word code="ZD">制动</word>
+		<word code="SC">刹车</word>
+		<word code="SS">手刹</word>
+		<word code="JS">脚刹</word>
+		<word code="ZC">驻车</word>
+		<word code="ZDL">制动力</word>
+	</performance>
+	<performance name="压缩" table="Compression">
+		<word code="YS">压缩</word>
+		<word code="YSB">压缩比</word>
+		<word code="QTYS">气体压缩</word>
+ 	</performance>
+	<performance name="传动比" table="Tansmission">
+		<word code="CDB">传动比</word>
+		<word code="ZJSB">主减速比</word>
+		<word code="JSB">减速比</word>
+ 	</performance>
+	<performance name="安全带" table="Safetybelt">
+		<word code="安全带">安全带</word>
+		<word code="YJSAQD">预紧式安全带</word>
+		<word code="HPSAQD">后排式安全带</word>
+		<word code="SDSAQD">三点式安全带</word>
+ 	</performance>
+	<performance name="乘员头颈保护系统" table="WHIPS">
+		<word code="CYTJBHXT">乘员头颈保护系统</word>
+		<word code="WHIPS">WHIPS</word>
+ 	</performance>
+	<performance name="防盗锁" table="Theftlock">
+		<word code="FDS">防盗锁</word>
+		<word code="FDJFDS">发动机防盗锁</word>
+		<word code="FDJFDSZXT">发动机防盗锁止系统</word>
+ 	</performance>
+	<performance name="雨量传感器" table="Rainfallsensor">
+		<word code="YLCGQ">雨量传感器</word>
+ 	</performance>
+	<performance name="悬架" table="Suspension">
+		<word code="XJ">悬架</word>
+ 	</performance>
+	<performance name="点火" table="Ignition">
+		<word code="DH">点火</word>
+		<word code="DH">打火</word>
+		<word code="PSDHXT">偏时点火系统</word>
+ 	</performance>
+	<performance name="引擎" table="Engine">
+		<word code="YQ">引擎</word>
+		<word code="ZZYQ">中置引擎</word>
+		<word code="ZZFDJ">中置发动机</word>
+		<word code="HZYQ">后置引擎</word>
+		<word code="HZFDJ">后置发动机</word>
+		<word code="QZYQ">前置引擎</word>
+		<word code="QZFDJ">前置发动机</word>
+		<word code="FDJ">发动机</word>
+		<word code="SFDJ">双发动机</word>
+		<word code="SYQ">双引擎</word>
+ 	</performance>
+	<performance name="限滑差速器" table="LSD">
+		<word code="XHCSQ">限滑差速器</word>
+		<word code="LSD">LSD</word>
+ 	</performance>
+	<performance name="电池" table="Battery">
+		<word code="DC">电池</word>
+		<word code="RLDC">燃料电池</word>
+		<word code="LDC">锂电池</word>
+		<word code="DP">电瓶</word>
+ 	</performance>
+	<performance name="全方位车体吸撞结构" table="GOA">
+		<word code="QFWCTXZJG">全方位车体吸撞结构</word>
+		<word code="XZ">吸撞</word>
+		<word code="GOA">GOA</word>
+ 	</performance>
+	<performance name="主动式安全头枕" table="SAHR">
+		<word code="ZDSAQTZ">主动式安全头枕</word>
+		<word code="SAHR">SAHR</word>
+		<word code="TZ">头枕</word>
+ 	</performance>
+	<performance name="全面安全防护" table="DSE">
+		<word code="QMAQFH">全面安全防护</word>
+		<word code="DSE">DSE</word>
+ 	</performance>
+	<performance name="座椅自动调节系统" table="EES">
+		<word code="ZYZDTJ">座椅自动调节系统</word>
+		<word code="EES">EES</word>
+ 	</performance>
+	<performance name="无离合器电子手排系统" table="ITEC">
+		<word code="WLHQDZSPXT">无离合器电子手排系统</word>
+		<word code="ITEC">ITEC</word>
+ 	</performance>
+	<performance name="连接柱" table="Connectingcolumn">
+		<word code="AZ">A柱</word>
+		<word code="BZ">B柱</word>
+		<word code="CZ">C柱</word>
+		<word code="DZ">D柱</word>
+ 	</performance>   
+	<performance name="节气门" table="throttlevalve">
+		<word code="JQM">节气门</word>
+ 	</performance>   
+</words>
+
+

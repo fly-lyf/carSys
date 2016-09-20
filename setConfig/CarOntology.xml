@@ -1,0 +1,1291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tree xmlns="http://www.inktomi.com/">
+ 
+ <company>
+       <brand name="比亚迪">         
+                        <type name="秦"></type>
+						<type name="唐"></type>
+						<type name="F0"></type>
+						<type name="思锐"></type>
+						<type name="M6"></type>
+						<type name="G6"></type>
+						<type name="S7"></type>
+						<type name="F3"></type>
+						<type name="F6"></type>
+						<type name="速锐"></type>
+						<type name="S6"></type>
+						<type name="e6"></type>
+						<type name="G3"></type>
+						<type name="G5"></type>
+						<type name="L3"></type>
+						<type name="S6"></type>
+       </brand>
+</company> 
+ <company>
+       <brand name="一汽大众">         
+                        <type name="速腾"></type>    
+                        <type name="迈腾"></type>
+						<type name="奥迪"></type>
+						<type name="宝来"></type> 
+						<type name="捷达"></type>
+						<type name="高尔夫"></type>
+						<type name="CC"></type>
+						<type name="途锐"></type>
+						<type name="途观"></type>
+						<type name="Tiguan"></type>
+						<type name="EOS"></type>
+						<type name="尚酷"></type>
+       </brand>
+</company>
+ <company>
+       <brand name="上海大众">         
+                        <type name="朗逸"></type>     
+                        <type name="途观"></type> 
+						<type name="朗境"></type>
+						<type name="朗行"></type>
+						<type name="帕萨特"></type>
+						<type name="途安"></type>
+						<type name="桑塔纳"></type>
+						<type name="Polo"></type>
+						<type name="凌渡"></type>
+						<type name="桑塔纳"></type>
+       </brand>
+</company>
+<company>
+       <brand name="大众">         
+						<type name="途锐V6"></type>
+						<type name="夏朗"></type>
+						<type name="高尔夫"></type>
+						<type name="辉腾"></type>
+						<type name="迈特威"></type>
+						<type name="甲壳虫"></type>
+						<type name="迈腾"></type>
+						<type name="凯路威"></type>
+						<type name="amarok"></type>
+						<type name="electric up"></type>
+						<type name="up！"></type>
+						<type name="朗逸"></type>     
+                        <type name="途观"></type> 
+						<type name="朗境"></type>
+						<type name="朗行"></type>
+						<type name="帕萨特"></type>
+						<type name="途安"></type>
+						<type name="桑塔纳"></type>
+						<type name="Polo"></type>
+						<type name="凌渡"></type>
+						<type name="桑塔纳"></type>
+                        <type name="速腾"></type>    
+                        <type name="迈腾"></type>
+						<type name="奥迪"></type>
+						<type name="宝来"></type> 
+						<type name="捷达"></type>
+						<type name="高尔夫"></type>
+						<type name="CC"></type>
+						<type name="途锐"></type>
+						<type name="途观"></type>
+						<type name="Tiguan"></type>
+						<type name="EOS"></type>
+						<type name="尚酷"></type>
+       </brand>
+</company>
+<company>
+       <brand name="奥迪">
+                          <type name="A4"></type>
+						  <type name="A5"></type>
+						  <type name="A6"></type> 
+						  <type name="A7"></type> 
+						  <type name="Q5"></type> 
+						  <type name="R8"></type>
+						  <type name="Q7"></type>
+						  <type name="A8"></type>
+						  <type name="A3"></type>
+						  <type name="A1"></type>
+						  <type name="S8"></type>
+						  <type name="S7"></type>
+						  <type name="S6"></type>
+						  <type name="S5"></type>
+						  <type name="S3"></type>
+						  <type name="SQ5"></type>
+						  <type name="RS5"></type>
+						  <type name="RS7"></type>
+						  <type name="TT"></type>
+						  <type name="Q3"></type>
+						  <type name="TTS"></type>
+       </brand>
+</company>
+<company>
+       <brand name="福特">      
+                        <type name="福克斯"></type>
+						<type name="蒙迪欧"></type>
+						<type name="翼虎"></type>
+						<type name="探险者"></type>
+						<type name="野马"></type>
+						<type name="嘉年华"></type>
+						<type name="锐界"></type>
+						<type name="麦柯斯"></type>
+						<type name="新世代"></type>
+						<type name="蒙迪欧"></type>
+						<type name="翼搏"></type>
+						<type name="福睿斯"></type>
+						<type name="E350"></type>
+						<type name="F-150"></type>
+       </brand>
+</company>
+<company>
+       <brand name="江铃福特">
+                        <type name="福克斯"></type>
+						<type name="蒙迪欧"></type>
+						<type name="全顺"></type>
+       </brand>
+</company>
+<company>
+       <brand name="江铃">      
+                        <type name="驭胜"></type>
+						<type name="域虎"></type>
+       </brand>
+</company>
+<company>
+       <brand name="铃木">         
+                        <type name="天语"></type>
+						<type name="雨燕"></type>
+						<type name="锋驭"></type>
+						<type name="奥拓"></type>
+						<type name="超级维特拉"></type>
+						<type name="凯泽西"></type>
+						<type name="吉姆尼"></type>
+						<type name="羚羊"></type>
+						<type name="派喜"></type>
+						<type name="利亚纳"></type>
+						<type name="天语尚悦"></type>
+						<type name="速翼特"></type>
+						<type name="启悦"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="别克">         
+                        <type name="凯越"></type>    
+                        <type name="君越"></type>
+						<type name="君威"></type>
+						<type name="昂科威"></type>
+						<type name="英朗"></type>
+						<type name="林荫大道"></type>
+						<type name="GL8"></type>
+						<type name="昂科雷"></type>
+						<type name="昂科拉"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="东风本田">         
+                        <type name="CRV"></type>    
+                        <type name="思域"></type>
+						<type name="杰德"></type>
+						<type name="思铂睿"></type>
+						<type name="艾力绅"></type>
+						<type name="思铭"></type>
+						<type name="XR-V"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="广汽本田">         
+                        <type name="凯美瑞"></type>    
+                        <type name="雅阁"></type>
+						<type name="飞度"></type>
+						<type name="锋范"></type>
+						<type name="凌派"></type>
+						<type name="奥德赛"></type>
+						<type name="缤智"></type>
+						<type name="歌诗图"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="本田">
+						<type name="CRZ"></type>
+						<type name="Insight"></type>
+						<type name="飞度"></type>
+						<type name="CRV"></type>    
+                        <type name="思域"></type>
+						<type name="杰德"></type>
+						<type name="思铂睿"></type>
+						<type name="艾力绅"></type>
+						<type name="思铭"></type>
+						<type name="XR-V"></type>
+                        <type name="凯美瑞"></type>    
+                        <type name="雅阁"></type>
+						<type name="飞度"></type>
+						<type name="锋范"></type>
+						<type name="凌派"></type>
+						<type name="奥德赛"></type>
+						<type name="缤智"></type>
+						<type name="歌诗图"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="雪佛兰">         
+                        <type name="科鲁兹"></type>    
+                        <type name="创酷"></type>
+						<type name="SPARK"></type>
+						<type name="赛欧"></type>
+						<type name="新赛欧"></type>
+						<type name="赛欧3"></type>
+						<type name="Volt"></type>
+						<type name="景程"></type>
+						<type name="爱唯欧"></type>
+						<type name="科迈罗"></type>
+						<type name="科帕奇"></type>
+						<type name="迈锐宝"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="荣威">         
+                        <type name="550"></type>    
+						<type name="W5"></type>
+						<type name="350"></type>
+						<type name="950"></type>
+						<type name="750"></type>
+						<type name="E50"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="斯柯达">         
+                        <type name="明锐"></type>
+                        <type name="速派"></type>
+						<type name="Yeti"></type>
+						<type name="晶锐"></type>
+						<type name="野帝"></type>
+						<type name="昕动"></type>
+						<type name="昕锐"></type>
+						<type name="速尊"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="日产">
+                        <type name="逍客"></type>
+                        <type name="轩逸"></type>
+						<type name="骊威"></type>
+						<type name="天籁"></type>
+						<type name="骐达"></type>
+						<type name="玛驰"></type>
+						<type name="帕拉骐"></type>
+						<type name="NV200"></type>
+						<type name="帅客"></type>
+						<type name="贵士"></type>
+						<type name="ZN6493"></type>
+						<type name="奥丁"></type>
+						<type name="奇骏"></type>
+						<type name="御轩"></type>
+						<type name="阳光"></type>
+						<type name="楼兰"></type>
+						<type name="皮卡"></type>
+						<type name="帕拉丁"></type>
+						<type name="GT-R"></type>
+						<type name="GTR"></type>
+						<type name="370Z"></type>
+						<type name="途乐"></type>
+						<type name="碧莲"></type>
+						<type name="俊风"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="猎豹">         
+                        <type name="飞腾"></type>
+						<type name="飞扬"></type>
+						<type name="6481"></type>
+						<type name="CS6"></type>
+						<type name="黑金刚"></type>
+						<type name="Q6"></type>
+						<type name="CT5"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="路虎">         
+                        <type name="揽胜"></type>
+						<type name="神行者"></type>
+						<type name="发现"></type>
+						<type name="发现神行"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="广汽丰田">         
+                        <type name="逸致"></type>    
+                        <type name="汉兰达"></type>
+						<type name="YARiS"></type>
+						<type name="86"></type>
+						<type name="皇冠"></type>
+						<type name="雷凌"></type>
+						<type name="普瑞维亚"></type>
+						<type name="Aventador"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="一汽丰田">         
+                        <type name="卡罗拉"></type>    
+                        <type name="RAV4"></type>
+						<type name="普锐斯"></type>
+						<type name="威驰"></type>
+						<type name="花冠"></type>
+						<type name="锐志"></type>
+						<type name="普拉多"></type>
+						<type name="兰德酷路泽"></type>
+						<type name="柯斯达"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="丰田">         
+                        <type name="杰路驰"></type>
+						<type name="Cruiser"></type>
+						<type name="酷路泽"></type>
+						<type name="威飒"></type>
+						<type name="埃尔法"></type>
+						<type name="红杉"></type>
+						<type name="HIACE"></type>
+						<type name="逸致"></type>    
+                        <type name="汉兰达"></type>
+						<type name="YARiS"></type>
+						<type name="86"></type>
+						<type name="皇冠"></type>
+						<type name="雷凌"></type>
+						<type name="普瑞维亚"></type>
+						<type name="Aventador"></type>
+						<type name="卡罗拉"></type>    
+                        <type name="RAV4"></type>
+						<type name="普锐斯"></type>
+						<type name="威驰"></type>
+						<type name="花冠"></type>
+						<type name="锐志"></type>
+						<type name="普拉多"></type>
+						<type name="兰德酷路泽"></type>
+						<type name="柯斯达"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="沃尔沃">         
+                        <type name="XC90"></type>    
+                        <type name="S60"></type>
+						<type name="XC60"></type>
+						<type name="V60"></type>
+						<type name="S60L"></type>
+						<type name="S80L"></type>
+						<type name="V40"></type>
+						<type name="XC"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="保时捷">         
+                        <type name="911"></type>
+						<type name="918"></type>
+                        <type name="Panamera"></type>
+						<type name="Cayenne"></type>
+						<type name="Boxster"></type>
+						<type name="卡宴"></type>
+						<type name="Macan"></type>
+						<type name="Cayman"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="911">         
+                        <type name="Carrera"></type>    
+                        <type name="GT3"></type>
+						<type name="Turbo"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="MINI">         
+                        <type name="COOPER"></type>    
+                        <type name="ONE"></type>
+						<type name="COUPE"></type>
+						<type name="COUNTRYMAN"></type>
+						<type name="CLUBMAN"></type>
+						<type name="PACEMAN"></type>
+						<type name="ROADSTER"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="纳智捷">         
+                        <type name="大7"></type>
+						<type name="MASTER CEO"></type>
+						<type name="Sedan"></type>
+						<type name="优6"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="现代">         
+                        <type name="胜达"></type>    
+                        <type name="朗动"></type>
+						<type name="飞思"></type>
+						<type name="Veloster"></type>
+						<type name="名图"></type>
+						<type name="雅科仕"></type>
+						<type name="伊兰特"></type>
+						<type name="雅尊"></type>
+						<type name="ix35"></type>
+						<type name="途胜"></type>
+						<type name="悦动"></type>
+						<type name="ix25"></type>
+						<type name="瑞纳"></type>
+						<type name="索纳塔"></type>
+						<type name="格锐"></type>
+						<type name="辉翼"></type>
+						<type name="捷恩斯"></type>
+						<type name="胜达"></type>
+						<type name="瑞奕"></type>
+						<type name="康恩迪"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="宝马">
+						<type name="118i"></type>
+						<type name="116i"></type>
+						<type name="125i"></type>
+						<type name="M135i"></type>
+						<type name="220i"></type>
+						<type name="M235i"></type>
+						<type name="316i"></type>
+						<type name="328i"></type>
+						<type name="320i"></type>
+						<type name="428i"></type>
+						<type name="420i"></type>
+						<type name="435i"></type>
+                        <type name="520i"></type>    
+                        <type name="528i"></type>
+						<type name="535i"></type>
+						<type name="550i"></type>
+						<type name="640i"></type>
+						<type name="650i"></type>
+						<type name="ActiveHybrid"></type>
+						<type name="Active Tourer"></type>
+						<type name="xDrive"></type>
+						<type name="M5"></type>
+						<type name="M4"></type>
+						<type name="M3"></type>
+						<type name="X5"></type>
+						<type name="X1"></type>
+						<type name="X6"></type>
+						<type name="X4"></type>
+						<type name="Z4"></type>
+						<type name="520Li"></type>
+						<type name="525Li"></type>
+						<type name="535Li"></type>
+						<type name="530Li"></type>
+						<type name="530Le"></type>
+						<type name="316Li"></type>
+						<type name="328Li"></type>
+						<type name="320Li"></type>
+						<type name="335Li"></type>
+						<type name="730Li"></type>
+						<type name="740Li"></type>
+						<type name="750Li"></type>
+						<type name="760Li"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="陆风"> 
+                        <type name="X8"></type>    
+						<type name="风尚"></type>
+						<type name="X5"></type>
+						<type name="X9"></type>
+						<type name="X6"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="讴歌">         
+                        <type name="MDX"></type>
+						<type name="ZDX"></type>
+						<type name="RDX"></type>
+						<type name="RLX"></type>
+						<type name="TLX"></type>
+						<type name="TL"></type>
+						<type name="ILX"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="斯巴鲁">         
+                        <type name="XV"></type>
+						<type name="翼豹"></type> 	
+						<type name="傲虎"></type>
+						<type name="森林人"></type>
+						<type name="力狮"></type>
+						<type name="驰鹏"></type>
+						<type name="BRZ"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="劳斯莱斯">         
+                        <type name="幻影"></type>
+						<type name="古斯特"></type>
+						<type name="魅影"></type> 
+						       </brand>
+</company>
+<company>
+       <brand name="长安">         
+                        <type name="CS75"></type>
+						<type name="CS35"></type>  
+						<type name="逸动"></type>
+						<type name="CX20"></type>
+						<type name="致尚XT"></type>
+						<type name="悦翔"></type>
+						<type name="长安之星"></type>
+						<type name="长安星光"></type>
+						<type name="欧力威"></type>
+						<type name="睿骋"></type>
+						<type name="奔奔"></type>
+						<type name="PSA"></type>
+						<type name="欧诺"></type>
+						<type name="尊行"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="海马">  
+						<type name="丘比特"></type>
+                        <type name="骑士"></type>
+						<type name="M3"></type>
+						<type name="M8"></type>
+						<type name="S5"></type>
+						<type name="海马王子"></type>
+						<type name="福美来"></type>
+						<type name="普力马"></type>
+						<type name="爱尚"></type>
+						<type name="S7"></type>
+						<type name="福仕达"></type>
+						<type name="福美来"></type>
+						<type name="海福星"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="双龙">         
+                        <type name="雷斯特"></type>
+						<type name="柯兰多"></type>
+						<type name="主席"></type>
+						<type name="爱腾"></type>
+						<type name="享御"></type>
+						<type name="路帝"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="起亚">         
+                        <type name="速迈"></type>
+						<type name="狮跑"></type>
+						<type name="凯尊"></type>
+						<type name="K3"></type>
+						<type name="赛拉图"></type>
+						<type name="K2"></type>
+						<type name="福瑞迪"></type>
+						<type name="VQ-R"></type>
+						<type name="佳乐"></type>
+						<type name="智跑"></type>
+						<type name="K5"></type>
+						<type name="霸锐"></type>
+						<type name="G3"></type>
+						<type name="K3S"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="菲亚特">         
+                        <type name="500"></type>
+						<type name="500C"></type>
+						<type name="菲跃"></type>
+						<type name="领雅"></type>
+						<type name="Linea"></type>
+						<type name="特致悦"></type>
+						<type name="菲翔"></type>
+						<type name="博悦"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="马自达">         
+                        <type name="马自达2"></type>
+						<type name="马自达3"></type>
+						<type name="马自达5"></type>
+						<type name="马自达6"></type>
+						<type name="马自达8"></type>
+						<type name="CX-7"></type>
+						<type name="CX-5"></type>
+						<type name="CX7"></type>
+						<type name="CX5"></type>
+						<type name="MX-5"></type>
+						<type name="CX-9"></type>
+						<type name="CX-7"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="马自达3">         
+                        <type name="星骋"></type>
+						<type name="昂克塞拉"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="法拉利">         
+                        <type name="California"></type>
+						<type name="BJ40"></type>
+						<type name="FF"></type>
+						<type name="458"></type>
+						<type name="F12"></type>
+						<type name="Berlinetta"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="北汽">         
+                        <type name="域胜"></type>
+						<type name="陆霸"></type>
+						<type name="勇士"></type>
+						<type name="绅宝"></type>
+						<type name="威旺"></type>
+						<type name="幻速"></type>
+						<type name="E150EV"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="吉利">         
+                        <type name="美日"></type>
+						<type name="金刚CROSS"></type>
+						<type name="金刚财富"></type>
+						<type name="自由舰"></type>
+						<type name="英伦TX4"></type>
+						<type name="EC8"></type>
+						<type name="远景"></type>
+						<type name="熊猫"></type>
+						<type name="金刚"></type>
+						<type name="GX7"></type>
+						<type name="帝豪"></type>
+						<type name="GC7"></type>
+						<type name="海景"></type>
+						<type name="SX7"></type>
+						<type name="K07"></type>
+						<type name="SC3"></type>
+						<type name="新帝豪"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="华泰">         
+                        <type name="B11"></type>
+						<type name="圣达菲"></type>
+						<type name="特拉卡"></type>
+						<type name="宝利格"></type>
+						<type name="路盛"></type>
+						<type name="新圣达菲"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="起亚">         
+                        <type name="K4"></type>
+						<type name="秀尔"></type>
+						<type name="SOUL"></type>
+						<type name="索兰托"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="奔腾">         
+                        <type name="B50"></type>
+						<type name="B70"></type>
+						<type name="B90"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="标致">         
+                        <type name="307"></type>
+						<type name="308"></type>
+						<type name="RCZ"></type>
+						<type name="2008"></type>
+						<type name="408"></type>
+						<type name="X80"></type>
+						<type name="4008"></type>
+						<type name="301"></type>
+						<type name="508"></type>
+						<type name="308"></type>
+						<type name="3008"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="三菱">         
+                        <type name="戈蓝"></type>
+						<type name="蓝瑟"></type>
+						<type name="欧蓝德"></type>
+						<type name="帕杰罗"></type>
+						<type name="劲炫"></type>
+						<type name="君阁"></type>
+						<type name="蓝瑟"></type>
+						<type name="帕杰罗"></type>
+						<type name="风迪思"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="哈弗">         
+                        <type name="H8"></type>
+						<type name="H6"></type>
+						<type name="H5"></type>
+						<type name="H9"></type>
+						<type name="H2"></type>
+						<type name="H1"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="力帆">         
+                        <type name="320"></type>
+						<type name="330"></type>
+						<type name="530"></type>
+						<type name="620"></type>
+						<type name="630"></type>
+						<type name="丰顺"></type>
+						<type name="X60"></type>
+						<type name="X50"></type>
+						<type name="520i"></type>
+						<type name="520"></type>
+						<type name="坤程"></type>
+						<type name="720"></type>
+						<type name="兴顺"></type>
+						<type name="福顺"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="一汽">         
+                        <type name="夏利"></type>
+						<type name="森雅"></type>
+						<type name="威志"></type>
+						<type name="森雅"></type>
+						<type name="佳宝"></type>
+						<type name="骏派"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="传祺">         
+                        <type name="GA5"></type>
+						<type name="GS5"></type>
+						<type name="GA3"></type>
+						<type name="GA6"></type>
+						<type name="GA3S"></type>
+						<type name="视界"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="雷克萨斯">         
+                        <type name="IS"></type>
+						<type name="LS"></type>
+						<type name="GX"></type>
+						<type name="NX"></type>
+						<type name="CT200h"></type>
+						<type name="GS250"></type>
+						<type name="GS350"></type>
+						<type name="LX570"></type>
+						<type name="GS300"></type>
+						<type name="GS450"></type>
+						<type name="ES250"></type>
+						<type name="ES300"></type>
+						<type name="ES350"></type>
+						<type name="LS600"></type>
+						<type name="RX270"></type>
+						<type name="RX450"></type>
+						<type name="RX350"></type>
+						<type name="RC"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="江淮">         
+                        <type name="瑞风"></type>
+						<type name="和悦"></type>
+						<type name="悦悦"></type>
+						<type name="星锐"></type>
+						<type name="征途"></type>
+						<type name="瑞铃"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="奔驰">         
+                        <type name="R400"></type>
+						<type name="R320"></type>
+						<type name="B200"></type>
+						<type name="B260"></type>
+						<type name="EE260"></type>
+						<type name="E260"></type>
+						<type name="E200"></type>
+						<type name="E400"></type>
+						<type name="E320"></type>
+						<type name="E260L"></type>
+						<type name="E180L"></type>
+						<type name="E200L"></type>
+						<type name="E320L"></type>
+						<type name="E400L"></type>
+						<type name="G500"></type>
+						<type name="SLK"></type>
+						<type name="A180"></type>
+						<type name="A200"></type>
+						<type name="A260"></type>
+						<type name="CLS400"></type>
+						<type name="CLS260"></type>
+						<type name="CLS320"></type>
+						<type name="C200L"></type>
+						<type name="C260L"></type>
+						<type name="S400"></type>
+						<type name="S600"></type>
+						<type name="S400L"></type>
+						<type name="S320L"></type>
+						<type name="S500L"></type>
+						<type name="GL350"></type>
+						<type name="GL400"></type>
+						<type name="GL500"></type>
+						<type name="GLA 200"></type>
+						<type name="GLA 260"></type>
+						<type name="SL350"></type>
+						<type name="GLK260"></type>
+						<type name="GLK200"></type>
+						<type name="GLK300"></type>
+						<type name="凌特尊旅"></type>
+						<type name="CLA260"></type>
+						<type name="ML320"></type>
+						<type name="尊逸"></type>
+						<type name="尊适"></type>
+						<type name="维达莱斯"></type>
+						<type name="尊铂"></type>
+						<type name="尊致"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="AMG">         
+                        <type name="S63L"></type>
+						<type name="S65L"></type>
+                        <type name="奔驰S63L"></type>
+						<type name="奔驰S65L"></type>
+						<type name="SLS"></type>
+						<type name="SL"></type>
+						<type name="奔驰ML"></type>
+						<type name="GLA"></type>
+						<type name="SL63"></type>
+						<type name="C63"></type>
+						<type name="SLK55"></type>
+						<type name="G63"></type>
+						<type name="G65"></type>
+						<type name="奔驰GL63"></type>
+						<type name="奔驰A45"></type>
+						<type name="奔驰CLA45"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="中华">         
+						<type name="H220"></type>
+						<type name="H230"></type>
+						<type name="H330"></type>
+						<type name="骏捷"></type>
+						<type name="骏捷FSV"></type>
+						<type name="骏捷Wagon"></type>
+						<type name="骏捷FRV"></type>
+						<type name="尊驰"></type>
+						<type name="V5"></type>
+						<type name="H320"></type>
+						<type name="H530"></type>
+						<type name="中华豚"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="福建奔驰">         
+                        <type name="威霆"></type>
+						<type name="唯雅诺"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="雪铁龙">         
+                        <type name="C4"></type>
+						<type name="C5"></type>
+						<type name="C2"></type>
+						<type name="C3-XR"></type>
+						<type name="毕加索"></type>
+						<type name="世嘉"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="奇瑞">         
+                        <type name="瑞虎5"></type>
+						<type name="风云2"></type>
+						<type name="艾瑞泽"></type>
+						<type name="瑞虎3"></type>
+						<type name="QQ"></type>
+						<type name="E3"></type>
+						<type name="eQ"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="观致">         
+                        <type name="观致3"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="众泰">         
+                        <type name="M300"></type>
+						<type name="T600"></type>
+						<type name="Z500"></type>
+						<type name="Z300"></type>
+						<type name="Z200"></type>
+						<type name="T200"></type>
+						<type name="V10"></type>
+						<type name="Z100"></type>
+						<type name="知豆"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="金杯">         
+                        <type name="阁瑞斯"></type>
+						<type name="智尚"></type>
+						<type name="S50"></type>
+						<type name="大海狮"></type>
+						<type name="新海狮"></type>
+						<type name="小海狮"></type>
+						<type name="大力神"></type>
+						<type name="海星"></type>
+						<type name="雷龙"></type>
+						<type name="金典"></type>
+						<type name="M300"></type>
+						<type name="海狮"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="MG">         
+                        <type name="MG3"></type>
+						<type name="MG5"></type>
+						<type name="MG6"></type>
+						<type name="MG GT"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="双环">         
+                        <type name="SCEO"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="Jeep">         
+                        <type name="自由客"></type>
+						<type name="指南者"></type>
+						<type name="自由光"></type>
+						<type name="牧马人"></type>
+						<type name="大切诺基"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="莲花">         
+                        <type name="L3"></type>
+						<type name="L5"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="长城">         
+                        <type name="C50"></type>
+						<type name="C20R"></type>
+						<type name="C30"></type>
+						<type name="风骏"></type>
+						<type name="M4"></type>
+						<type name="M2"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="道奇">         
+                        <type name="酷威"></type>
+						<type name="Ram"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="宝骏">         
+                        <type name="610"></type>
+						<type name="630"></type>
+						<type name="乐驰"></type>
+						<type name="730"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="威麟">         
+                        <type name="V5"></type>
+						<type name="H3"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="捷豹">         
+                        <type name="XJL"></type>
+						<type name="F-TYPE"></type>
+						<type name="XF"></type>
+						<type name="XE"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="五菱">         
+                        <type name="荣光"></type>
+						<type name="宏光"></type>
+						<type name="五菱之光"></type>
+						<type name="征程"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="东南">         
+                        <type name="得利卡"></type>
+						<type name="菱致"></type>
+						<type name="菱悦"></type>
+						<type name="菱仕"></type>
+						<type name="希旺"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="雷诺">         
+                        <type name="拉古那"></type>
+						<type name="纬度"></type>
+						<type name="风朗"></type>
+						<type name="科雷傲"></type>
+						<type name="梅甘娜"></type>
+						<type name="塔利斯曼"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="小康">         
+                        <type name="K17"></type>
+						<type name="V27"></type>
+						<type name="风光"></type>
+						<type name="K07"></type>
+						<type name="V29"></type>
+						<type name="V07S"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="风行">         
+                        <type name="K17"></type>
+
+						<type name="景逸"></type>
+						<type name="菱智"></type>
+						<type name="CM7"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="景逸">         
+						<type name="景逸X5"></type>
+						<type name="景逸S50"></type>
+						<type name="景逸XL"></type>
+						<type name="景逸LV"></type>
+						<type name="景逸X3"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="开瑞">         
+                        <type name="优雅"></type>
+						<type name="优优"></type>
+						<type name="优劲"></type>
+						<type name="优胜"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="哈飞">         
+                        <type name="小霸王"></type>
+						<type name="路宝"></type>
+						<type name="骏意"></type>
+						<type name="民意"></type>
+						<type name="中意"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="江南">         
+                        <type name="TT"></type>
+						<type name=""></type>
+
+						       </brand>
+</company>
+<company>
+       <brand name="玛莎拉蒂">         
+                        <type name="总裁"></type>
+						<type name="GranCabrio"></type>
+						<type name="GranTurismo"></type>
+						<type name="Ghibli"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="DS">         
+                        <type name="DS3"></type>
+						<type name="DS4"></type>
+
+						       </brand>
+</company>
+<company>
+       <brand name="阿斯顿·马丁">         
+                        <type name="V8"></type>
+						<type name="DB9"></type>
+						<type name="Rapide"></type>
+						<type name="V12"></type>
+						<type name="Zagato"></type>
+						<type name="Vanquish"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="凯迪拉克">         
+                        <type name="凯雷德"></type>
+						<type name="SRX"></type>
+						<type name="XTS"></type>
+						<type name="CTS"></type>
+						<type name="凯雷德"></type>
+						<type name="ATS"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="理念">         
+                        <type name="S1"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="风神">         
+                        <type name="Cross"></type>
+						<type name="S30"></type>
+						<type name="A60"></type>
+						<type name="AX7"></type>
+						<type name="A30"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="宾利">         
+                        <type name="欧陆"></type>
+						<type name="慕尚"></type>
+						<type name="飞驰"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="GMC">         
+                        <type name="Savana"></type>
+						<type name=""></type>
+
+						       </brand>
+</company>
+<company>
+       <brand name="林肯">         
+                        <type name="MKC"></type>
+						<type name="MKZ"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="启辰">         
+                        <type name="R50"></type>
+						<type name="D50"></type>
+						<type name="R30"></type>
+						<type name="T70"></type>
+						<type name="晨风"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="昌河">         
+                        <type name="福瑞达"></type>
+						<type name="爱迪尔"></type>
+						<type name="福运"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="smart">         
+                        <type name="fortwo"></type>
+						<type name="Jeremy"></type>
+
+						       </brand>
+</company>
+<company>
+       <brand name="英菲尼迪">         
+                        <type name="QX50"></type>
+						<type name="Q50"></type>
+						<type name="Q50L"></type>
+						<type name="QX70"></type>
+						<type name="ESQ"></type>
+						<type name="Q70L"></type>
+						<type name="QX80"></type>
+						<type name="QX60"></type>
+						<type name="Q60"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="特斯拉">         
+                        <type name="Model"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="永源">         
+                        <type name="A380"></type>
+						<type name="五星"></type>
+
+						       </brand>
+</company>
+<company>
+       <brand name="红旗">         
+                        <type name="H7"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="克莱斯勒">         
+                        <type name="大捷龙"></type>
+						<type name="300C"></type>
+
+						       </brand>
+</company>
+<company>
+       <brand name="西雅特">         
+                        <type name="leon"></type>
+						<type name="IBIZA"></type>
+						<type name="伊比飒"></type>
+						<type name="欧悦搏"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="欧朗">         
+                        <type name="欧朗"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="野马">         
+                        <type name="F10"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="大通">         
+                        <type name="V80"></type>
+						<type name="G10"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="兰博基尼">         
+                        <type name="Huracan"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="福田">         
+                        <type name="拓陆者"></type>
+						<type name="风景"></type>
+						<type name="萨普"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="吉奥">         
+                        <type name="奥轩"></type>
+						<type name="星朗"></type>
+						<type name="财运"></type>
+						<type name="星旺"></type>
+						<type name="GX6"></type>
+						<type name="E美"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="路特斯">         
+                        <type name="Evora"></type>
+						<type name="GTE"></type>
+						<type name="Exige"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="巴博斯">         
+                        <type name="38S"></type>
+						<type name="50S"></type>
+						<type name="35MR"></type>
+						<type name="35GC"></type>
+						<type name="26SC"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="迈凯伦">         
+                        <type name="12C"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="英致">         
+                        <type name="G3"></type>
+						       </brand>
+</company>
+<company>
+       <brand name="摩根">         
+                        <type name="Aero"></type>
+						<type name="4-4"></type>
+						<type name="plus"></type>
+						<type name="Roadster"></type>
+						       </brand>
+</company>
+</tree>
