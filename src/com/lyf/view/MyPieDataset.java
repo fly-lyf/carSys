@@ -2,89 +2,73 @@ package com.lyf.view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
-import java.io.File;
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-import javax.imageio.ImageIO;
-
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
-import org.jfree.chart.labels.StandardPieToolTipGenerator;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.title.LegendTitle;
-import org.jfree.chart.title.TextTitle;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.ui.RectangleEdge;
 
 public class MyPieDataset {
-	JFreeChart chart;
-	public MyPieDataset(Data[] data){
-		  {
-		    }
-	}
-	   public MyPieDataset() {
-		// TODO Auto-generated constructor stub
-	}	
-	public PieDataset createDataset(Data[] data) {
-		
-		   DefaultPieDataset dataset = new DefaultPieDataset();
-		   for(int i=0;i<data.length;i++){
-			   dataset .setValue(data[i].getName(),new Double(data[i].getData()));
-		   }
-	        return dataset;        
-	    }
-	   public JFreeChart createChart(PieDataset dataset) {
-	         
-	        chart = ChartFactory.createPieChart3D(
-	            "",  // chart title
-	            dataset,             // data
-	            false,               // include legend
-	            true,
-	            true
-	        );
-	        
-	        chart.setBackgroundPaint(new Color(89,194,230));
-	        chart.setBorderVisible(false);
-	        
-	        PiePlot plot = (PiePlot) chart.getPlot();
-	        plot.setSectionOutlinesVisible(true);
+    JFreeChart chart;
+
+    public MyPieDataset() {
+
+    }
+
+    public PieDataset createDataset(Data[] data) {
+        DefaultPieDataset dataset = new DefaultPieDataset();
+
+        for (int i = 0; i < data.length; i++) {
+            dataset.setValue(data[i].getName(), new Double(data[i].getData()));
+        }
+        return dataset;
+    }
+
+    public JFreeChart createChart(Data[] data) {
+        PieDataset dataset = createDataset(data);
+        chart = ChartFactory.createPieChart3D(
+                "",  // chart title
+                dataset,             // data
+                false,               // include legend
+                true,
+                true
+        );
+
+        chart.setBackgroundPaint(new Color(89, 194, 230));
+        chart.setBorderVisible(false);
+
+        PiePlot plot = (PiePlot) chart.getPlot();
+        plot.setSectionOutlinesVisible(true);
 //	        plot.setToolTipGenerator(new StandardPieToolTipGenerator());
-	        
-	        plot.setCircular(true);
-	        plot.setBackgroundPaint(new Color(89,194,230));
-	        plot.setOutlinePaint(new Color(89,194,230));
-	        
-	        LegendTitle legendTitle = new LegendTitle(plot);//´´½¨Í¼Àý
-	        legendTitle.setPosition(RectangleEdge.RIGHT);  //ÉèÖÃÍ¼ÀýµÄÎ»ÖÃ
-	        legendTitle.setBorder(1, 1, 1, 1);
-	        legendTitle.setItemFont(new Font("ËÎÌå", Font.PLAIN, 10)); 
+
+        plot.setCircular(true);
+        plot.setBackgroundPaint(new Color(89, 194, 230));
+        plot.setOutlinePaint(new Color(89, 194, 230));
+
+        LegendTitle legendTitle = new LegendTitle(plot);//åˆ›å»ºå›¾ä¾‹
+        legendTitle.setPosition(RectangleEdge.LEFT);  //è®¾ç½®å›¾ä¾‹çš„ä½ç½®
+        legendTitle.setBorder(1, 1, 1, 1);
+        legendTitle.setItemFont(new Font("å®‹ä½“", Font.PLAIN, 10));
 
 //	        plot.setLabelGenerator(null);
-	        plot.setLabelFont(new Font("ËÎÌå", Font.PLAIN, 10)); 
-//	        plot.setLabelOutlinePaint(null);//±êÇ©±ß¿òÑÕÉ«
-	        plot.setLabelShadowPaint(null);
-	        plot.setLabelBackgroundPaint(null);
-	        plot.setForegroundAlpha(Float.parseFloat("0.7")); //Í¼Æ¬Ç°¾°µÄÍ¸Ã÷¶È£¬Í¼Æ¬µÄÇ°¾°¾ÍÊÇÕâÀïµÄ±ý×´Í¼£¬Í¸Ã÷¶ÈÎª0.0~1.0
-	        plot.setLegendLabelGenerator(new StandardPieSectionLabelGenerator("{0}({1},{2})",
-	        NumberFormat.getNumberInstance(),
-	        new DecimalFormat("0.00%"))); //ÉèÖÃ¹¤¾ßÌõÊÇ·ñÏÔÊ¾³ö°Ù·Ö±È£¬ÆäËüÍ¬ÉÏ
-	        
-	        chart.addLegend(legendTitle);
-	        
-	         
-	        return chart;
-	         
-	    }
-	   public static PieDataset getDataset() {
-		   
-	        return getDataset();        
-	    }
+        plot.setLabelFont(new Font("å®‹ä½“", Font.PLAIN, 10));
+//	        plot.setLabelOutlinePaint(null);//æ ‡ç­¾è¾¹æ¡†é¢œè‰²
+        plot.setLabelShadowPaint(null);
+        plot.setLabelBackgroundPaint(null);
+        plot.setForegroundAlpha(Float.parseFloat("0.7")); //å›¾ç‰‡å‰æ™¯çš„é€æ˜Žåº¦ï¼Œå›¾ç‰‡çš„å‰æ™¯å°±æ˜¯è¿™é‡Œçš„é¥¼çŠ¶å›¾ï¼Œé€æ˜Žåº¦ä¸º0.0~1.0
+        plot.setLegendLabelGenerator(new StandardPieSectionLabelGenerator("{0}({1},{2})",
+                NumberFormat.getNumberInstance(),
+                new DecimalFormat("0.00%"))); //è®¾ç½®å·¥å…·æ¡æ˜¯å¦æ˜¾ç¤ºå‡ºç™¾åˆ†æ¯”ï¼Œå…¶å®ƒåŒä¸Š
+
+        chart.addLegend(legendTitle);
+        return chart;
+
+    }
 }
 

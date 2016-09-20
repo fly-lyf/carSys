@@ -4,27 +4,26 @@ import org.jfree.chart.ChartMouseEvent;
 import org.jfree.chart.ChartMouseListener;
 
 public class MyChartMouseListener implements ChartMouseListener {
-	private String typestr;
-	public MyChartMouseListener(String type) {
-		// TODO Auto-generated constructor stub
+    private String typestr;
+    private Integer level;
 
-		typestr  = type;
-	}
+    public MyChartMouseListener(String type, int level) {
+        // TODO Auto-generated constructor stub
+        this.typestr = type;
+        this.level = level;
+    }
 
-	@Override
-	public void chartMouseClicked(ChartMouseEvent arg0) {
-		// TODO Auto-generated method stub
-		if(typestr == "emptyValue"){
-	}else{
-		showDetail_view sdv = new showDetail_view(typestr);
-	}
-		
-	}
+    @Override
+    public void chartMouseClicked(ChartMouseEvent arg0) {
+        // TODO Auto-generated method stub
+        if (!typestr.equals("emptyValue")) {
+            showDetail_view sdv = new showDetail_view(typestr, level);
+        }
+    }
 
-	@Override
-	public void chartMouseMoved(ChartMouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
+    @Override
+    public void chartMouseMoved(ChartMouseEvent arg0) {
+        // TODO Auto-generated method stub
+    }
 
 }

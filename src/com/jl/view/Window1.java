@@ -248,7 +248,7 @@ public class Window1 extends JFrame implements ActionListener,MouseListener,Wind
 		
 		int w=Toolkit.getDefaultToolkit().getScreenSize().width;
 		int h=Toolkit.getDefaultToolkit().getScreenSize().height;
-		//关闭窗口是退出
+		//关闭窗口时退出
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		addWindowListener(this);
 		this.setIconImage(titleIcon);

@@ -1,3 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tree xmlns="http://www.inktomi.com/">
-<brand xmlns="" name="福特"><performance name="油耗" weight="2;">1</performance></brand><brand xmlns="" name="马自达"><performance name="空间" weight="7;">1</performance><performance name="动力" weight="7;7;">2</performance><performance name="性能" weight="7;">1</performance></brand><brand xmlns="" name="本田"><performance name="动力" weight="7;7;">2</performance></brand><brand xmlns="" name="斯柯达"><performance name="性能" weight="7;7;">2</performance></brand><brand xmlns="" name="大众"><performance name="性能" weight="11;11;11;14;14;14;58;58;58;">9</performance></brand><brand xmlns="" name="比亚迪"><performance name="性能" weight="23;23;110;116;">4</performance><performance name="动力" weight="110;116;">2</performance></brand><brand xmlns="" name="奔腾"><performance name="座椅" weight="41;">1</performance></brand><brand xmlns="" name="三菱"><performance name="座椅" weight="66;">1</performance><performance name="动力" weight="66;">1</performance></brand><brand xmlns="" name="现代"><performance name="性能" weight="75;">1</performance></brand><brand xmlns="" name="长城"><performance name="动力" weight="140;">1</performance></brand></tree>
+    <brand  name="福特">
+        <performance name="油耗" weight="2;">1</performance>
+    </brand>
+    <brand  name="马自达">
+        <performance name="空间" weight="7;">1</performance>
+        <performance name="动力" weight="7;7;">2</performance>
+        <performance name="性能" weight="7;">1</performance>
+    </brand>
+    <brand  name="本田">
+        <performance name="动力" weight="7;7;">2</performance>
+    </brand>
+    <brand  name="斯柯达">
+        <performance name="性能" weight="7;7;">2</performance>
+    </brand>
+    <brand  name="大众">
+        <performance name="性能" weight="11;11;11;14;14;14;58;58;58;">9</performance>
+    </brand>
+    <brand name="比亚迪">
+        <performance name="性能" weight="23;23;110;116;">4</performance>
+        <performance name="动力" weight="110;116;">2</performance>
+        <type name="秦">
+            <performance name="性能" weight="23;23;110;116;">4</performance>
+        </type>
+    </brand>
+    <brand name="奔腾">
+        <performance name="座椅" weight="41;">1</performance>
+    </brand>
+    <brand  name="三菱">
+        <performance name="座椅" weight="66;">1</performance>
+        <performance name="动力" weight="66;">1</performance>
+    </brand>
+    <brand  name="现代">
+        <performance name="性能" weight="75;">1</performance>
+    </brand>
+    <brand  name="长城">
+        <performance name="动力" weight="140;">1</performance>
+    </brand>
+</tree>
