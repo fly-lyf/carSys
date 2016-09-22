@@ -22,11 +22,10 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.jl.domain.Product;
-import com.jl.extract.extract_de;
 import com.jl.productSql.productService;
 
-public class showDetail_view extends JDialog implements ActionListener {
-    public showDetail_view(String type, int level) {
+public class ShowDetailView extends JDialog implements ActionListener {
+    public ShowDetailView(String type, int level) {
         JScrollPane jp = new JScrollPane();
 //		JPanel jp = new JPanel();
         JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);
@@ -66,7 +65,7 @@ public class showDetail_view extends JDialog implements ActionListener {
         this.add(jp, BorderLayout.SOUTH);
         this.setModal(true);
         this.setVisible(true);
-//		centerWindow(this);
+
         validate();
 
     }
@@ -81,16 +80,10 @@ public class showDetail_view extends JDialog implements ActionListener {
         panel.setViewportView(table);
         tab.addTab(stype, panel);
         // todo-fly 去数据库拉取数据，传给下边的tm，用于表格数据显示
-        // todo-fly 原先的sql语句为 select id,urltime,channel,content from negativeinfo where id={wgtnumber[j]}，后边这个貌似可以优化为 id in {wgtnumber}
         for (int j = 0; j < wgtnumber.length; j++) {
             try {
                 String id = wgtnumber[j];
-              //  String sql = "select id,urltime,channel,content from negativeinfo where id="
-              //          + id + "";
-               // SqlHelper sqh = new SqlHelper();
-                System.out.println("id:" + id);
                 productService ps=new productService();
-               //  ResultSet rs;
                 Product pro= ps.queryForProductID(Integer.parseInt(id));
                 Vector row = new Vector();
               
@@ -112,7 +105,6 @@ public class showDetail_view extends JDialog implements ActionListener {
         TableColumn columncontent= table.getColumnModel().getColumn(1);
        
         columnid.setMaxWidth(40);
-       // columncontent.setMaxWidth(500);
         columncontent.setPreferredWidth(800);
       
         table.addMouseListener(new MouseAdapter() {
@@ -132,13 +124,6 @@ public class showDetail_view extends JDialog implements ActionListener {
 
     }
 
-    public void centerWindow(showDetail_view showDetail_view) {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension scmSize = toolkit.getScreenSize();
-        int width = showDetail_view.getSize().width, height = showDetail_view.getSize().height;
-        showDetail_view.setLocation(scmSize.width / 2 - (width / 2), scmSize.height
-                / 2 - (height / 2));
-    }
 
     public ArrayList extractDetail(String File, String xpath, String attr) {
         //获取属性值
@@ -149,11 +134,8 @@ public class showDetail_view extends JDialog implements ActionListener {
         ArrayList list1 = new ArrayList();
         try {
             doc = reader.read(file);
-            //result_Nodes = extract_de.searchNodes(xpath, doc.getRootElement());
-              System.out.println("xpath:"+xpath);
             result_Nodes =  doc.selectNodes(xpath);
             for (Element result : result_Nodes) {          	
-                //List list = extract_de.searchNodes("./" + "performance" + "", result);
             	List list =doc.selectNodes(xpath+"/performance");
                 for (int j = 0; j < list.size(); j++) {
                     Element sen1 = (Element) list.get(j);
