@@ -1,4 +1,5 @@
 package com.jl.extract;
+import java.awt.BorderLayout;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ import edu.fudan.util.exception.LoadModelException;
 public class extract_de implements Runnable{
    
 	private volatile boolean flag;  //设置以便临时中断分类
+
 	 
 	public void setFlag(boolean flag) {
 	        this.flag = flag;
@@ -34,11 +36,19 @@ public class extract_de implements Runnable{
 	    
 	public synchronized void stopCurrentThread() {
 	        this.flag = false;
+	        
 	    }
 	
 	
 	public void run(){
 		
+		infoAnalysis_view iv=common.infoA.get(3);
+		
+		flush_view fv=new flush_view();   //设置一个刷新线程
+		fv.setFlag(true);
+		Thread a=new Thread(fv);
+		a.start();
+		common.thread_fl.put("fl", fv);
 		
 		try{	
 		CreateDatabase cd= new CreateDatabase();		
@@ -72,13 +82,24 @@ public class extract_de implements Runnable{
 			}
 		  }
 			i++;
-			infoAnalysis_view iv=common.infoA.get(3);
+			
 			iv.flush_count(i);
+//			if(i%3==0){
+//				iv.zongCenter.removeAll();
+//				iv.flush_chart();
+//				iv.add(iv.zongCenter, BorderLayout.CENTER);
+//			
+//			}
 		}                   //
 		
 		}catch(Exception e){
 			 e.printStackTrace();
 		}
+		
+		iv.zongCenter.removeAll();
+		iv.flush_chart();
+		iv.add(iv.zongCenter, BorderLayout.CENTER);
+		
 	}
 	
 	//只含有汽车品牌名的句子
@@ -95,7 +116,7 @@ public class extract_de implements Runnable{
 				 try{
 				 String newSen1=newSen.replaceAll(" ", "");
 				 double fo_quan=1.0;
-				    int no=newSen1.indexOf("不");    //查看句子中是否带有否定词“不”
+				    int no=newSen1.indexOf("没有");    //查看句子中是否带有否定词“不”
 				    int noh=newSen1.indexOf("不太");
 				    if(noh!=-1){
 				    	fo_quan=-0.5;
@@ -142,7 +163,7 @@ public class extract_de implements Runnable{
 			    try{
 				    String newSen1=newSen.replaceAll(" ", "");
 				    double fo_quan=1.0;
-				    int no=newSen1.indexOf("不");    //查看句子中是否带有否定词“不”	
+				    int no=newSen1.indexOf("没有");    //查看句子中是否带有否定词“不”	
 				    int noh=newSen1.indexOf("不太");
 				    if(noh!=-1){
 				    	fo_quan=-0.5;

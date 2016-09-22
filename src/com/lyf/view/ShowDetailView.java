@@ -63,7 +63,7 @@ public class ShowDetailView extends JFrame implements ActionListener {
         headPane.setLayout(new FlowLayout(FlowLayout.CENTER));
         headPane.setBackground(new Color(89, 194, 230));
 
-        this.setSize(1500, 900);
+        this.setSize(800, 800);
 //        this.setLocationRelativeTo(null);
 //        this.setModal(true);
         this.setTitle(type + "负面信息详情");
@@ -87,24 +87,41 @@ public class ShowDetailView extends JFrame implements ActionListener {
         panel.setViewportView(table);
         tab.addTab(stype, panel);
         // todo-fly 去数据库拉取数据，传给下边的tm，用于表格数据显示
-        for (int j = 0; j < wgtnumber.length; j++) {
-            try {
-                String id = wgtnumber[j];
-                productService ps = new productService();
-                Product pro = ps.queryForProductID(Integer.parseInt(id));
-                Vector row = new Vector();
-
-                row.addElement(pro.getId());
-                row.addElement(pro.getCONTENT());
-                data.add(row);
-
-                ps.Close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        //否则连接太多会报错，一次取出
+        String sql="select * from product where id in(";
+        for(int i=0;i<wgtnumber.length;i++){
+        	sql=sql+wgtnumber[i]+",";
         }
-
+        String ss=sql.substring(0, sql.length()-1)+");";
+        System.out.println(ss);
+        productService ps = new productService();
+        List  ll=ps.queryForAllProduct(ss);
+        ps.Close();
+        for(int j=0;j<ll.size();j++){
+            Product pro = (Product) ll.get(j);
+            Vector row = new Vector();
+            row.addElement(pro.getId());
+            row.addElement(pro.getCONTENT());
+            data.add(row);  
+        }
+        
+//        productService ps = new productService();
+//        for (int j = 0; j < wgtnumber.length; j++) {
+//            try {
+//                String id = wgtnumber[j];
+//              
+//                Product pro = ps.queryForProductID(Integer.parseInt(id));
+//                Vector row = new Vector();
+//                row.addElement(pro.getId());
+//                row.addElement(pro.getCONTENT());
+//                data.add(row);
+//                
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        ps.Close();
+        
         tm.setDataVector(data, column);
         table.setModel(tm);
         table.setVisible(true);

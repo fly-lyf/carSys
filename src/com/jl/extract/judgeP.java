@@ -55,7 +55,7 @@ public class judgeP {
 				double value=po.getPolarity()*fo_quan;
 				System.out.println("词极性度："+value);
 				ps.Close();
-				if(value<-0.07)
+				if(value<-0.08)
 				{
 					SAXReader reader=new SAXReader();
 			        File file=new File("setConfig/result.xml");
@@ -161,7 +161,7 @@ public class judgeP {
 				double value=po.getPolarity()*fo_quan;
 				System.out.println("词极性度："+value);
 				ps.Close();
-				if(value<-0.07)
+				if(value<-0.08)
 				{
 					SAXReader reader=new SAXReader();
 			        File file=new File("setConfig/result.xml");

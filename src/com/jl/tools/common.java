@@ -6,6 +6,7 @@ import java.util.HashSet;
 
 import com.jl.classify.beginclassify;
 import com.jl.extract.extract_de;
+import com.jl.extract.flush_view;
 import com.jl.view.infoAnalysis_view;
 import com.jl.view.infoCollection_view;
 import com.jl.view.infoSummary_view;
@@ -19,7 +20,7 @@ public class common {
 	
 	public static HashMap<String,beginclassify>   thread=new HashMap<String,beginclassify>();  //存放分类的线程对象
 	public static HashMap<String,extract_de>   thread_ex=new HashMap<String,extract_de>();   //存放分析的线程对象
-	
+	public static HashMap<String,flush_view>   thread_fl=new HashMap<String,flush_view>();
 	
 	public static HashMap<String,Integer> analysis_point=new HashMap<String,Integer>();
 	

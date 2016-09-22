@@ -37,6 +37,7 @@ public class testC implements Runnable{
 			 ArrayList negative2=new ArrayList();   //指标中负极性词
 			 positive2.add("强劲");
 			 positive2.add("十足");
+			 positive2.add("足");         //修改添加处
 			 positive2.add("可以");
 		     positive2.add("好");
 			 positive2.add("快");
@@ -56,6 +57,7 @@ public class testC implements Runnable{
 			 ArrayList positive3=new ArrayList();   //指标中正极性词
 			 ArrayList negative3=new ArrayList();   //指标中负极性词
 			 positive3.add("便宜");
+			 positive3.add("不贵");
 			 positive3.add("低");
 			 negative3.add("昂贵");
 			 negative3.add("高");
@@ -73,6 +75,8 @@ public class testC implements Runnable{
 			 ArrayList negative4=new ArrayList();   //指标中负极性词
 			 positive4.add("美观");
 			 positive4.add("创新");
+			 positive4.add("稳重");
+			 positive4.add("大气");
 			 positive4.add("大方");
 			 positive4.add("漂亮");
 			 positive4.add("高端");
@@ -166,6 +170,7 @@ public class testC implements Runnable{
 			 positive9.add("好") ;
 			 positive9.add("高") ;
 			 positive9.add("不错") ;
+			 positive9.add("灵敏") ;
 			 positive9.add("掌握") ;
 			 negative9.add("一般");
 			 negative9.add("差");
@@ -1051,8 +1056,8 @@ public class testC implements Runnable{
 			 ArrayList negative73=new ArrayList();   //指标中负极性词
 			 positive73.add("老") ;
 			 positive73.add("大") ;
-			 negative73.add("新");
-			 positive73.add("小") ;
+			 negative73.add("旧");
+			 negative73.add("小") ;
 			 System.out.println("polar73");
 			 Polarity po73=new Polarity(name73, positive73, negative73);
 			 Thread a73=new Thread(po73);
@@ -1064,6 +1069,7 @@ public class testC implements Runnable{
 			 ArrayList negative74=new ArrayList();   //指标中负极性词
 			 positive74.add("高") ;
 			 positive74.add("喜欢") ;
+			 positive74.add("大爱") ;
 			 positive74.add("漂亮") ;
 			 positive74.add("高端") ;
 			 negative74.add("低");

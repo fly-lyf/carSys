@@ -25,10 +25,10 @@ public class DepParser {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		parser = new JointParser("models/dep.m");
-		String word = "内饰做工差强人意，尤其是前排";
+		//parser = new JointParser("models/dep.m");
+		String word = " 铃木雨燕    特点：外形时尚可适当改装、油耗低、保值率高";
 		DepParser de = new DepParser();
-		System.out.println(de.deparser(word, "内饰"));
+		System.out.println(de.deparser(word, "油耗"));
 	}
 
 
@@ -51,29 +51,29 @@ public class DepParser {
         ArrayList al=new ArrayList();  //存放候选词，词为动词、形容词。。。
 		
 		if (length > 1) {
-			
-			
+			  
 			  //使用fudan Parser处理
-			for (int i = 0; i < bb.length; i++) {
-				if(bb[i].equals("核心词")){
-					flag1=i;
-					if(cc[i].equals("形容词")||cc[i].equals("形谓词")||cc[i].equals("副词")){
-						return dd[i];
+			   for (int i = 0; i < bb.length; i++) {
+					if(bb[i].equals("核心词")){
+						flag1=i;
+						if(cc[i].equals("形容词")||cc[i].equals("形谓词")||cc[i].equals("副词")){					
+							return dd[i];
+						}
 					}
 				}
-			}
+				
 			   //没有结果 ，选择离评价属性词最近的形容词等。。。
 			   List  ll=HanLP.segment(sen);
 			   for (int i = 0; i < ll.size(); i++) {
 				 Term ss=(Term) ll.get(i);
 				// System.out.println(ss+"");
 				 String[] gg=(ss+"").split("\\/");
-				if (gg[1].equals("a")||gg[1].equals("ad")||gg[1].equals("ag")||gg[1].equals("al")||gg[1].equals("z")||gg[1].equals("zg")||gg[1].equals("nz")||gg[1].equals("vl")){
+				if (gg[1].equals("a")||gg[1].equals("ad")||gg[1].equals("ag")||gg[1].equals("al")||gg[1].equals("z")||gg[1].equals("zg")||gg[1].equals("nz")||gg[1].equals("vl")||gg[1].equals("vi")){
 					al.add(i);
 					
 				 }
 			   }
-			   if(al.size()!=0){
+			     //获得评价对象词的位置
 			   int key_wz=-1;
 			   for (int i = 0; i < ll.size(); i++) {
 				    Term ss=(Term) ll.get(i);
@@ -81,9 +81,12 @@ public class DepParser {
 						key_wz=i;
 					}
 				}
-			   if(key_wz!=-1){
-			      int min=1000;
-			      int qg_wz=-1;
+			   
+			   if(al.size()!=0){
+			 
+			    if(key_wz!=-1){
+			       int min=1000;
+			       int qg_wz=-1;
 			      for(int t=0;t<al.size();t++){
 			       if(key_wz!=(Integer)al.get(t)) { 
 				   int vv=Math.abs((Integer)al.get(t)-key_wz);
@@ -93,15 +96,20 @@ public class DepParser {
 				    }
 			       }
 			     }
-			        if(qg_wz!=-1){
-			        Term s=(Term) ll.get(qg_wz);
-			        return s.word;}else{
-			        	return "";
+			        if(qg_wz!=-1 && min<5)  //如果形容词和核心词距离太长，就用fudannlp处理
+			        {
+			           Term s=(Term) ll.get(qg_wz);
+			           return s.word;
+			          }else{
+	                   return "";
 			        }
 			    }
 			   }else{
-				    return "";
+
+				       return "";
 			   }
+			   
+	
 					
 		}
 		return "";
@@ -117,7 +125,7 @@ public class DepParser {
 			// DependencyTree tree = parser.parse2T(s[0],s[1]);
 			// System.out.println(tree.toString());
 			String stree = parser.parse2String(s[0], s[1], true);
-			//System.out.println(stree);
+		   // System.out.println(stree);
 			result = stree;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -29,6 +29,7 @@ import org.jfree.chart.JFreeChart;
 
 import com.jl.classify.beginclassify;
 import com.jl.extract.extract_de;
+import com.jl.extract.flush_view;
 import com.jl.gpaApplication.testC;
 import com.jl.sql.CreateDatabase;
 import com.jl.tools.MyTools;
@@ -36,26 +37,30 @@ import com.jl.tools.common;
 import com.lyf.view.*;
 
 public class infoAnalysis_view extends JPanel implements ActionListener {
-    JPanel kz_analysis, kz_title, kz_button;
-    JButton jb_start, jb_stop;
-    JLabel jl_title, jl_count;
+ public   JPanel kz_analysis, kz_title, kz_button;
+ public    JButton jb_start, jb_stop;
+ public    JLabel jl_title, jl_count;
 
-    JPanel kz_dictionary;
-    JLabel label_dictionary;
-    JButton load_dictionary, delete_dictionary;
+ public    JPanel kz_dictionary;
+ public    JLabel label_dictionary;
+ public    JButton load_dictionary, delete_dictionary;
 
-    ChartPanel chartPanel;
+ public   ChartPanel chartPanel;
 
-    JPanel headPane;
-    JScrollPane treePane;
-    JPanel chartPane;
-    JPanel zongCenter;
-    JLabel jl1;
+ public   JPanel headPane;
+ public   JScrollPane treePane;
+ public   JPanel chartPane;
+ public    JPanel zongCenter;
+ public    JLabel jl1;
 
-    MyPieDataset pie;
-
-    JTree tree;
-    MyTreeList treeList;
+ public   MyPieDataset pie;
+ public   JFreeChart chart;
+ public    JTree tree;
+ public   MyTreeList treeList;
+ public   JPanel colorPane;
+ 
+ public   JLabel dic_title; 
+ public   JPanel dic_top,dic_bottom;
 
     public void flush_dicLabel() {
         label_dictionary.setText("极性词典创建完成");
@@ -65,6 +70,78 @@ public class infoAnalysis_view extends JPanel implements ActionListener {
         jl_count.setText("已经分析完" + i + "条信息");
     }
 
+    public void flush_chart(){
+    	 System.out.println("调用刷新函数");
+    	  zongCenter = new JPanel();
+    	  zongCenter.setBackground(new Color(89, 194, 230));
+          chartPane = new JPanel();
+
+
+          //饼图
+          pie = new MyPieDataset();
+
+          //树形列表
+          treeList = new MyTreeList();
+          tree = treeList.createTree();
+          tree.addTreeSelectionListener(e -> {
+              DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+              if (!node.getUserObject().equals("车型")) {
+                  String name = (String) node.getUserObject();
+                  Data[] data;
+                  HashMap<String, Integer> performances = new HashMap<String, Integer>();
+                  if (node.getLevel() == 1) {
+                      //品牌名
+                      performances = getNodes("setConfig/result.xml", "/tree/brand[@name='" + name + "']", true);
+                  } else if (node.getLevel() == 2) {
+                      //车型名
+                      performances = getNodes("setConfig/result.xml", "/tree/brand/type[@name='" + name + "']", false);
+                      data = new Data[performances.size()];
+
+                  }
+                  data = new Data[performances.size()];
+                  int i = 0;
+                  for (Iterator<Map.Entry<String, Integer>> iterator = performances.entrySet().iterator(); iterator.hasNext(); ) {
+                      Map.Entry<String, Integer> it = iterator.next();
+                      data[i] = new Data(it.getKey(), it.getValue().toString());
+                      i++;
+                  }
+                  chart = pie.createChart(name,data);
+                  chartPanel = new ChartPanel(chart);
+                  chartPanel.addChartMouseListener(new MyChartMouseListener(name, node.getLevel()));
+                  chartPanel.setBackground(new Color(89, 194, 230));
+                  //this.chartPanel存的是图表，chartPane是图表容器，zongcenter是chartPane的外层panel
+                  //每次点击树图的时候，删除chartPanel并新建一个新的，重新放进chartPane里
+                  //chartPane的用处是设置了BorderLayout，在west部分加了一个JPanel，给图例挤出来一点空间
+//                  if (this.chartPanel != null) {
+//                      chartPane.remove(this.chartPanel);  //去掉的不全，导致可能点击报错
+//                  }
+//                  this.chartPanel = chartPanel;
+                if ( chartPanel != null) {
+                    chartPane.removeAll();  
+                 }
+                  chartPanel = chartPanel;
+                  chartPane.setLayout(new BorderLayout());
+                  colorPane = new JPanel();
+                  colorPane.setBackground(new Color(89, 194, 230));
+                  chartPane.add(colorPane, BorderLayout.WEST);
+                  chartPanel.setPreferredSize(new Dimension(chartPane.getWidth(), chartPane.getHeight()));
+                  chartPane.add(chartPanel,BorderLayout.CENTER);
+                  zongCenter.add(chartPane, BorderLayout.CENTER);
+              }
+          });
+
+          zongCenter.setLayout(new BorderLayout());
+          //貌似JScrollpane必须加component初始化，所以现在树形列表有点贴边了
+          treePane = new JScrollPane(tree);
+          treePane.setBorder(null);
+          colorPane = new JPanel();
+          colorPane.setBackground(new Color(89, 194, 230));
+          treePane.setBackground(Color.WHITE);
+          treePane.setPreferredSize(new Dimension(300, this.getHeight()));
+          zongCenter.add(treePane, BorderLayout.WEST);
+          
+         
+    }
 
     public infoAnalysis_view() {
 
@@ -102,72 +179,22 @@ public class infoAnalysis_view extends JPanel implements ActionListener {
         kz_analysis.setBackground(new Color(89, 194, 230));
 
         //中间的面板
-        zongCenter = new JPanel();
-        chartPane = new JPanel();
-
-
-        //饼图
-        pie = new MyPieDataset();
-
-        //树形列表
-        treeList = new MyTreeList();
-        tree = treeList.createTree();
-        tree.addTreeSelectionListener(e -> {
-            DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-            if (!node.getUserObject().equals("车型")) {
-                String name = (String) node.getUserObject();
-                Data[] data;
-                HashMap<String, Integer> performances = new HashMap<String, Integer>();
-                if (node.getLevel() == 1) {
-                    //品牌名
-                    performances = getNodes("setConfig/result.xml", "/tree/brand[@name='" + name + "']", true);
-                } else if (node.getLevel() == 2) {
-                    //车型名
-                    performances = getNodes("setConfig/result.xml", "/tree/brand/type[@name='" + name + "']", false);
-                    data = new Data[performances.size()];
-
-                }
-                data = new Data[performances.size()];
-                int i = 0;
-                for (Iterator<Map.Entry<String, Integer>> iterator = performances.entrySet().iterator(); iterator.hasNext(); ) {
-                    Map.Entry<String, Integer> it = iterator.next();
-                    data[i] = new Data(it.getKey(), it.getValue().toString());
-                    i++;
-                }
-                JFreeChart chart = pie.createChart(name,data);
-                ChartPanel chartPanel = new ChartPanel(chart);
-                chartPanel.addChartMouseListener(new MyChartMouseListener(name, node.getLevel()));
-                chartPanel.setBackground(new Color(89, 194, 230));
-                //this.chartPanel存的是图表，chartPane是图表容器，zongcenter是chartPane的外层panel
-                //每次点击树图的时候，删除chartPanel并新建一个新的，重新放进chartPane里
-                //chartPane的用处是设置了BorderLayout，在west部分加了一个JPanel，给图例挤出来一点空间
-                if (this.chartPanel != null) {
-                    chartPane.remove(this.chartPanel);
-                }
-                this.chartPanel = chartPanel;
-                chartPane.setLayout(new BorderLayout());
-                JPanel colorPane = new JPanel();
-                colorPane.setBackground(new Color(89, 194, 230));
-                chartPane.add(colorPane, BorderLayout.WEST);
-                chartPanel.setPreferredSize(new Dimension(chartPane.getWidth(), chartPane.getHeight()));
-                chartPane.add(chartPanel,BorderLayout.CENTER);
-                zongCenter.add(chartPane, BorderLayout.CENTER);
-            }
-        });
-
-        zongCenter.setLayout(new BorderLayout());
-        //貌似JScrollpane必须加component初始化，所以现在树形列表有点贴边了
-        treePane = new JScrollPane(tree);
-        treePane.setBorder(null);
-        JLabel colorPane = new JLabel();
-        colorPane.setBackground(new Color(89, 194, 230));
-        treePane.setBackground(Color.WHITE);
-        treePane.setPreferredSize(new Dimension(300, this.getHeight()));
-        zongCenter.add(treePane, BorderLayout.WEST);
-
+      
+        flush_chart();
 
         //下面的面板控制
-        kz_dictionary = new JPanel();
+        kz_dictionary = new JPanel(new BorderLayout());
+        dic_top=new JPanel();
+        dic_top.setBackground(new Color(89, 194, 230));
+        dic_bottom=new JPanel();
+        dic_bottom.setBackground(new Color(89, 194, 230));
+        
+        dic_title=new JLabel("极性词典");
+        dic_title.setFont(MyTools.f6);
+        dic_title.setForeground(Color.WHITE);
+        dic_top.add(dic_title);
+        
+        
         load_dictionary = new JButton("创建极性词典");
         load_dictionary.addActionListener(this);
         load_dictionary.setActionCommand("dictionary");
@@ -178,10 +205,15 @@ public class infoAnalysis_view extends JPanel implements ActionListener {
         label_dictionary = new JLabel();
         label_dictionary.setFont(MyTools.f6);
         label_dictionary.setForeground(Color.WHITE);
-        kz_dictionary.add(load_dictionary);
-        kz_dictionary.add(delete_dictionary);
-        kz_dictionary.add(label_dictionary);
+        
+        dic_bottom.add(load_dictionary);
+        dic_bottom.add(delete_dictionary);
+        dic_bottom.add(label_dictionary);
+        
+        kz_dictionary.add(dic_top, BorderLayout.NORTH);
+        kz_dictionary.add(dic_bottom, BorderLayout.CENTER);
         kz_dictionary.setBackground(new Color(89, 194, 230));
+        
 
         this.setLayout(new BorderLayout());
         this.add(kz_analysis, BorderLayout.NORTH);
@@ -203,16 +235,40 @@ public class infoAnalysis_view extends JPanel implements ActionListener {
             } catch (Exception e2) {
                 e2.printStackTrace();
             }
-            extract_de de = new extract_de();
-            de.setFlag(true);
-            new Thread(de).start();
-            common.thread_ex.put("th", de);
+            extract_de de =common.thread_ex.get("th");
+            if(de==null){
+                 System.out.println("线程第一次开始");
+            	 de = new extract_de();
+                 de.setFlag(true);
+                 new Thread(de).start();           
+                 common.thread_ex.put("th", de);
+                 
+             
+            }
+            else{
+            	
+            	System.out.println("重新开始");
+            	common.thread_ex.remove("th");
+            	de = new extract_de();
+                de.setFlag(true);
+                new Thread(de).start();           
+                common.thread_ex.put("th", de);
+                      
+            }
+           
 
         }
         if (e.getActionCommand().equals("analysis_stop")) {
+                  
             System.out.println("终止分析");
-            extract_de de = common.thread_ex.get("th");
+            
+            extract_de de = common.thread_ex.get("th");      
             de.stopCurrentThread();
+                              
+            flush_view fv=common.thread_fl.get("fl");
+            fv.setFlag(false);
+                  
+            
         }
         if (e.getActionCommand().equals("dictionary")) {
             label_dictionary.setText("开始创建极性词典");
@@ -303,14 +359,11 @@ public class infoAnalysis_view extends JPanel implements ActionListener {
         try {
             doc = reader.read(file);
             Element root = doc.getRootElement();
-            // System.out.println("xpath路径："+xpath);
-            //  brandOrTypeNodes = extract_de.searchNodes(xpath, doc);
             brandOrTypeNodes = doc.selectNodes(xpath);
 
             for (Element brandOrTypeNode : brandOrTypeNodes) {
 
                 List<Element> list = new ArrayList<>();
-                //  list = extract_de.searchNodes("./" + "performance", brandOrTypeNode);
                 list = brandOrTypeNode.selectNodes(xpath + "/performance");
                 Integer count;
                 for (int j = 0; j < list.size(); j++) {
