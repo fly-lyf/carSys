@@ -68,7 +68,7 @@ public class testXMLView extends JPanel implements ActionListener {
                     data[i] = new Data(it.getKey(), it.getValue().toString());
                     i++;
                 }
-                JFreeChart chart = pie.createChart(data);
+                JFreeChart chart = pie.createChart(name, data);
                 ChartPanel chartPanel = new ChartPanel(chart);
                 chartPanel.addChartMouseListener(new MyChartMouseListener(name, node.getLevel()));
                 chartPanel.setBackground(new Color(89, 194, 230));
