@@ -10,6 +10,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.title.LegendTitle;
+import org.jfree.chart.title.TextTitle;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.ui.RectangleEdge;
@@ -30,7 +31,7 @@ public class MyPieDataset {
         return dataset;
     }
 
-    public JFreeChart createChart(Data[] data) {
+    public JFreeChart createChart(String title, Data[] data) {
         PieDataset dataset = createDataset(data);
         chart = ChartFactory.createPieChart3D(
                 "",  // chart title
@@ -51,13 +52,16 @@ public class MyPieDataset {
         plot.setBackgroundPaint(new Color(89, 194, 230));
         plot.setOutlinePaint(new Color(89, 194, 230));
 
+        //设定图片标题
+        chart.setTitle(new TextTitle(title, new Font("宋体", Font.BOLD, 20)));
+
         LegendTitle legendTitle = new LegendTitle(plot);//创建图例
         legendTitle.setPosition(RectangleEdge.LEFT);  //设置图例的位置
         legendTitle.setBorder(1, 1, 1, 1);
-        legendTitle.setItemFont(new Font("宋体", Font.PLAIN, 10));
+        legendTitle.setItemFont(new Font("宋体", Font.PLAIN, 15));
 
 //	        plot.setLabelGenerator(null);
-        plot.setLabelFont(new Font("宋体", Font.PLAIN, 10));
+        plot.setLabelFont(new Font("宋体", Font.PLAIN, 15));
 //	        plot.setLabelOutlinePaint(null);//标签边框颜色
         plot.setLabelShadowPaint(null);
         plot.setLabelBackgroundPaint(null);

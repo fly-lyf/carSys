@@ -1,8 +1,6 @@
 package com.lyf.view;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -16,6 +14,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import com.jl.tools.MyTools;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -24,11 +23,13 @@ import org.dom4j.io.SAXReader;
 import com.jl.domain.Product;
 import com.jl.productSql.productService;
 
-public class ShowDetailView extends JDialog implements ActionListener {
+public class ShowDetailView extends JFrame implements ActionListener {
     public ShowDetailView(String type, int level) {
         JScrollPane jp = new JScrollPane();
-//		JPanel jp = new JPanel();
         JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);
+        JPanel headPane = new JPanel();
+        JLabel headLabel = new JLabel(type + "负面信息详情");
+
         JTextArea jtxt = new JTextArea();
         jtxt.setLineWrap(true);
         jtxt.setText("");
@@ -54,16 +55,23 @@ public class ShowDetailView extends JDialog implements ActionListener {
         tab.setVisible(true);
         jp.setViewportView(jtxt);
         jp.setVisible(true);
-        jp.setPreferredSize(new Dimension(700, 200));
+        jp.setPreferredSize(new Dimension(700, 400));
 
+        headLabel.setFont(MyTools.f5);
+        headLabel.setForeground(Color.WHITE);
+        headPane.add(headLabel);
+        headPane.setLayout(new FlowLayout(FlowLayout.CENTER));
+        headPane.setBackground(new Color(89, 194, 230));
 
-        this.setSize(900, 700);
-        this.setLocationRelativeTo(null);
-        this.setTitle("负面信息");
+        this.setSize(1500, 900);
+//        this.setLocationRelativeTo(null);
+//        this.setModal(true);
+        this.setTitle(type + "负面信息详情");
         this.setLayout(new BorderLayout());
-        this.add(tab, BorderLayout.NORTH);
+        this.add(headPane, BorderLayout.NORTH);
+        this.add(tab, BorderLayout.CENTER);
         this.add(jp, BorderLayout.SOUTH);
-        this.setModal(true);
+        centerWindow(this);
         this.setVisible(true);
 
         validate();
@@ -74,7 +82,6 @@ public class ShowDetailView extends JDialog implements ActionListener {
         // TODO Auto-generated method stub
         Vector data = new Vector();
         final DefaultTableModel tm = new DefaultTableModel();
-        JButton button = new JButton(stype);
         JScrollPane panel = new JScrollPane();
         final JTable table = new JTable();
         panel.setViewportView(table);
@@ -83,16 +90,16 @@ public class ShowDetailView extends JDialog implements ActionListener {
         for (int j = 0; j < wgtnumber.length; j++) {
             try {
                 String id = wgtnumber[j];
-                productService ps=new productService();
-                Product pro= ps.queryForProductID(Integer.parseInt(id));
+                productService ps = new productService();
+                Product pro = ps.queryForProductID(Integer.parseInt(id));
                 Vector row = new Vector();
-              
+
                 row.addElement(pro.getId());
                 row.addElement(pro.getCONTENT());
                 data.add(row);
-                
+
                 ps.Close();
-                
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -102,11 +109,11 @@ public class ShowDetailView extends JDialog implements ActionListener {
         table.setModel(tm);
         table.setVisible(true);
         TableColumn columnid = table.getColumnModel().getColumn(0);
-        TableColumn columncontent= table.getColumnModel().getColumn(1);
-       
+        TableColumn columncontent = table.getColumnModel().getColumn(1);
+
         columnid.setMaxWidth(40);
         columncontent.setPreferredWidth(800);
-      
+
         table.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 1) {//点击几次，这里是双击事件
@@ -124,6 +131,13 @@ public class ShowDetailView extends JDialog implements ActionListener {
 
     }
 
+    public void centerWindow(ShowDetailView ShowDetailView) {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension scmSize = toolkit.getScreenSize();
+        int width = ShowDetailView.getSize().width, height = ShowDetailView.getSize().height;
+        ShowDetailView.setLocation(scmSize.width / 2 - (width / 2), scmSize.height
+                / 2 - (height / 2));
+    }
 
     public ArrayList extractDetail(String File, String xpath, String attr) {
         //获取属性值
@@ -134,9 +148,9 @@ public class ShowDetailView extends JDialog implements ActionListener {
         ArrayList list1 = new ArrayList();
         try {
             doc = reader.read(file);
-            result_Nodes =  doc.selectNodes(xpath);
-            for (Element result : result_Nodes) {          	
-            	List list =doc.selectNodes(xpath+"/performance");
+            result_Nodes = doc.selectNodes(xpath);
+            for (Element result : result_Nodes) {
+                List list = doc.selectNodes(xpath + "/performance");
                 for (int j = 0; j < list.size(); j++) {
                     Element sen1 = (Element) list.get(j);
                     String text = sen1.attributeValue(attr);
