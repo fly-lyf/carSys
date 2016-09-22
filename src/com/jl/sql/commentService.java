@@ -144,7 +144,8 @@ public class commentService {
     
   
 
-    public void save1(Comment comment) {
+    public void save1(Comment comment) {  
+	     
         jdbcTemplate.update("insert into information(URLTIME,CHANNEL,URLNAME,URLTITLE,CONTENT,AUTHOR) values(?,?,?,?,?,?)",   
                 new Object[]{comment.getURLTIME(),comment.getCHANNEL(),comment.getURLNAME(),comment.getURLTITLE(),comment.getCONTENT(),comment.getAUTHOR()});  
     }  

@@ -1,13 +1,12 @@
 # Created by .ignore support plugin (hsz.mobi)
 .DS_Store
 .settings
-.gitignore
 .idea/
 .classpath
 .project
 *.eml
 *.iml
 bin/
-setConfig/.DS_Store
-src/com/jl/newords/.DS_Store
-src/com/jl/sql/.DS_Store
+__MACOSX/
+models/
+out/

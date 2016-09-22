@@ -21,7 +21,9 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import com.jl.domain.Product;
 import com.jl.extract.extract_de;
+import com.jl.productSql.productService;
 
 public class showDetail_view extends JDialog implements ActionListener {
     public showDetail_view(String type, int level) {
@@ -36,8 +38,6 @@ public class showDetail_view extends JDialog implements ActionListener {
 
         Vector<String> column = new Vector<String>();
         column.addElement("id");
-        column.addElement("时间");
-        column.addElement("来源");
         column.addElement("内容");
         String xpath = "/tree/brand";
         if (level == 2) {
@@ -82,44 +82,44 @@ public class showDetail_view extends JDialog implements ActionListener {
         tab.addTab(stype, panel);
         // todo-fly 去数据库拉取数据，传给下边的tm，用于表格数据显示
         // todo-fly 原先的sql语句为 select id,urltime,channel,content from negativeinfo where id={wgtnumber[j]}，后边这个貌似可以优化为 id in {wgtnumber}
-//        for (int j = 0; j < wgtnumber.length; j++) {
-//            try {
-//                String id = wgtnumber[j];
-//                String sql = "select id,urltime,channel,content from negativeinfo where id="
-//                        + id + "";
-//                SqlHelper sqh = new SqlHelper();
-//                System.out.println("id:" + id);
-//                ResultSet rs;
-//                rs = sqh.queryExecute(sql);
-//                Vector row = new Vector();
-//                while (rs.next()) {
-//                    row.addElement(rs.getString(1));
-//                    row.addElement(rs.getString(2));
-//                    row.addElement(rs.getString(3));
-//                    row.addElement(rs.getString(4));
-//                    data.add(row);
-//                }
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        for (int j = 0; j < wgtnumber.length; j++) {
+            try {
+                String id = wgtnumber[j];
+              //  String sql = "select id,urltime,channel,content from negativeinfo where id="
+              //          + id + "";
+               // SqlHelper sqh = new SqlHelper();
+                System.out.println("id:" + id);
+                productService ps=new productService();
+               //  ResultSet rs;
+                Product pro= ps.queryForProductID(Integer.parseInt(id));
+                Vector row = new Vector();
+              
+                row.addElement(pro.getId());
+                row.addElement(pro.getCONTENT());
+                data.add(row);
+                
+                ps.Close();
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         tm.setDataVector(data, column);
         table.setModel(tm);
         table.setVisible(true);
         TableColumn columnid = table.getColumnModel().getColumn(0);
-        TableColumn columntime = table.getColumnModel().getColumn(1);
-        TableColumn columnchannel = table.getColumnModel().getColumn(2);
+        TableColumn columncontent= table.getColumnModel().getColumn(1);
+       
         columnid.setMaxWidth(40);
-        columntime.setMaxWidth(200);
-        columntime.setPreferredWidth(150);
-        columnchannel.setMaxWidth(200);
-        columnchannel.setPreferredWidth(150);
+       // columncontent.setMaxWidth(500);
+        columncontent.setPreferredWidth(800);
+      
         table.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 1) {//点击几次，这里是双击事件
                     int row = table.getSelectedRow();
-                    String str = (String) tm.getValueAt(row, 3);
+                    String str = (String) tm.getValueAt(row, 1);
                     jtxt.setText(str);
                 }
             }
@@ -149,9 +149,12 @@ public class showDetail_view extends JDialog implements ActionListener {
         ArrayList list1 = new ArrayList();
         try {
             doc = reader.read(file);
-            result_Nodes = extract_de.searchNodes(xpath, doc.getRootElement());
-            for (Element result : result_Nodes) {
-                List list = extract_de.searchNodes("./" + "performance" + "", result);
+            //result_Nodes = extract_de.searchNodes(xpath, doc.getRootElement());
+              System.out.println("xpath:"+xpath);
+            result_Nodes =  doc.selectNodes(xpath);
+            for (Element result : result_Nodes) {          	
+                //List list = extract_de.searchNodes("./" + "performance" + "", result);
+            	List list =doc.selectNodes(xpath+"/performance");
                 for (int j = 0; j < list.size(); j++) {
                     Element sen1 = (Element) list.get(j);
                     String text = sen1.attributeValue(attr);

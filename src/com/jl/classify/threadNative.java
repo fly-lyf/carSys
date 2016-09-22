@@ -33,10 +33,9 @@ public class threadNative {
         }else{
             System.out.println("分类结果："+result); 
             //将分类好的结果中属于产品的内容添加到产品评论表中
-            if(result.equals("product")){
-            
-            	cs.saveProduct(text);
-            	           	
+            if(result.equals("product")){ 
+            	System.out.println("需要保存的text:"+text);
+            	cs.saveProduct(text);           	           	
             }
         
         }

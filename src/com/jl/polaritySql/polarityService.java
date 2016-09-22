@@ -30,20 +30,26 @@ public class polarityService {
     }
     
 	
-    public void savePolarity(String tablename,String word,double probility){
+     public void savePolarity(String tablename,String word,double probility){
     	jdbcTemplate.update(  
                 "insert into "+tablename+" (word,probility) values(?,?)",   
                 new Object[]{word,probility},   
                 new int[]{java.sql.Types.VARCHAR,java.sql.Types.DOUBLE}  
                 );  
-    }
+     }
     
-     public Polarity queryForOneProduct(String table,String ci) {  
+     public int queryForTotalRows(String table,String word){  
+         return jdbcTemplate.queryForInt("select count(*) from "+table+" where word='"+word+"'");  
+     }  
+    
+     public Polarity queryForOneProduct(String table,String  word) {  
+    	 System.out.println("select * from "+table+" where word='"+word+"' limit 1");
         //方法有返回值  
-        return (Polarity) jdbcTemplate.queryForObject("select probility from "+table+" where word='"+ci+"'limit 1",  
+        return (Polarity) jdbcTemplate.queryForObject("select * from "+table+" where word='"+word+"' limit 1",  
                 new RowMapper() {  	        	
                     public Object mapRow(ResultSet rs, int rowNum) throws SQLException {  
                         Polarity po  = new Polarity();
+                        po.setId(rs.getInt("id"));
                         po.setPolarity(rs.getDouble("probility"));                    
                         return po;  
                     }
@@ -53,24 +59,5 @@ public class polarityService {
         );  
      }
 
-//	public Integer selectCP(String tag, String des1) {
-//		Integer flag = 0;
-//		try {
-//			this.connect();
-//			ps = ct.prepareStatement("select probility from xuanci where name1='"
-//					+ tag + "' and name2='" + des1 + "' limit 1");
-//			rs = ps.executeQuery();
-//			if (rs.next()) {
-//
-//				flag = rs.getInt(1);
-//				System.out.println(flag);
-//			}
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			this.close();
-//		}
-//		return flag;
-//	}
+
 }

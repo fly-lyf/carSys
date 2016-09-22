@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.List;
 
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -40,17 +41,21 @@ public class judgeP {
 		}
 		return xinneng;
 	}
-	public void judgeS1(String brand,String type,String tag,String des,int number){
+	
+	public void judgeS1(String brand,String type,String tag,String des,int number,double fo_quan){
 		try{
 			String[] tt=this.getXinneng(tag);
 			if(tt!=null){
 				String newtag=tt[0];//得到评价性能名
 				String table=tt[1];//得到极性表名
 				polarityService  ps=new polarityService();
-				Polarity po=ps.queryForOneProduct(table, des);
-				double value=po.getPolarity();
+				int count= ps.queryForTotalRows(table, des);
+				if(count!=0){
+			    Polarity po=ps.queryForOneProduct(table, des);	
+				double value=po.getPolarity()*fo_quan;
+				System.out.println("词极性度："+value);
 				ps.Close();
-				if(value<-0.2)
+				if(value<-0.07)
 				{
 					SAXReader reader=new SAXReader();
 			        File file=new File("setConfig/result.xml");
@@ -60,7 +65,7 @@ public class judgeP {
 			        if(node==null){
 			        	Element newStu=DocumentHelper.createElement("brand");		
 			    		//如何给元素添加属性
-			    		newStu.addAttribute("name", brand);
+			    		newStu.addAttribute("name", brand);	
 			    		Element newStu_type=DocumentHelper.createElement("type");
 			    		newStu_type.addAttribute("name",type);
 			    		Element newP=DocumentHelper.createElement("performance");
@@ -72,9 +77,10 @@ public class judgeP {
 			    		doc.getRootElement().add(newStu);
 			    		OutputFormat output=OutputFormat.createPrettyPrint();
 			    		output.setEncoding("utf-8");//输出的编码utf-8
-			    		 XMLWriter writer = new XMLWriter(
-			    	        		new FileOutputStream(file));
+			    		XMLWriter writer = new XMLWriter(
+			    	        		new FileOutputStream(file),output);
 			    		writer.write( doc );
+			    		writer.flush();
 			            writer.close();
 			                
 			        }else{
@@ -95,8 +101,9 @@ public class judgeP {
 			        	            ((Element)node_xin).setAttributeValue("weight", weight);
 			        	            OutputFormat output=OutputFormat.createPrettyPrint();
 			        	            output.setEncoding("utf-8");
-			        	            XMLWriter writer=new XMLWriter(new FileOutputStream(file));
+			        	            XMLWriter writer=new XMLWriter(new FileOutputStream(file),output);
 			        	            writer.write(doc);
+			        	            writer.flush();
 			        	            writer.close();
 			        			
 			        		}else{
@@ -108,8 +115,9 @@ public class judgeP {
 			        			OutputFormat output=OutputFormat.createPrettyPrint();
 			            		output.setEncoding("utf-8");//输出的编码utf-8
 			            		 XMLWriter writer = new XMLWriter(
-			            	        		new FileOutputStream(file));
+			            	        		new FileOutputStream(file),output);
 			            		writer.write( doc );
+			            		writer.flush();
 			                    writer.close();
 			        		}
 			        		
@@ -124,8 +132,9 @@ public class judgeP {
 			        		OutputFormat output=OutputFormat.createPrettyPrint();
 			        		output.setEncoding("utf-8");//输出的编码utf-8
 			        		 XMLWriter writer = new XMLWriter(
-			        	        		new FileOutputStream(file));
+			        	        		new FileOutputStream(file),output);
 			        		writer.write( doc );
+			        		writer.flush();
 			                writer.close();
 			        	}
 			        	
@@ -133,22 +142,26 @@ public class judgeP {
 				}
 	            
 			}
+			}
 			}catch(Exception e){
 				e.printStackTrace();
 			}
 	}
 	
-	public void judgeS2(String brand,String tag,String des,int number){
+	public void judgeS2(String brand,String tag,String des,int number,double fo_quan){
 		try{
 			String[] tt=this.getXinneng(tag);
 			if(tt!=null){
 				String newtag=tt[0];//得到评价性能名
 				String table=tt[1];//得到极性表名
 				polarityService  ps=new polarityService();
-				Polarity po=ps.queryForOneProduct(table, des);
-				double value=po.getPolarity();
+				int count=ps.queryForTotalRows(table, des);
+				if(count!=0){
+			    Polarity po=ps.queryForOneProduct(table, des);	
+				double value=po.getPolarity()*fo_quan;
+				System.out.println("词极性度："+value);
 				ps.Close();
-				if(value<-0.2)
+				if(value<-0.07)
 				{
 					SAXReader reader=new SAXReader();
 			        File file=new File("setConfig/result.xml");
@@ -158,7 +171,9 @@ public class judgeP {
 			        if(node==null){
 			        	Element newStu=DocumentHelper.createElement("brand");		
 			    		//如何给元素添加属性
-			    		newStu.addAttribute("name", brand);			  
+			    		newStu.addAttribute("name", brand);	
+			    		newStu.addAttribute("xmlns", "http://www.inktomi.com/");  //增加命名空间
+			    		
 			    		Element newP=DocumentHelper.createElement("performance");
 			    		newP.addAttribute("name", newtag);
 			    		newP.addAttribute("weight", number+";");
@@ -167,13 +182,13 @@ public class judgeP {
 			    		doc.getRootElement().add(newStu);
 			    		OutputFormat output=OutputFormat.createPrettyPrint();
 			    		output.setEncoding("utf-8");//输出的编码utf-8
-			    		 XMLWriter writer = new XMLWriter(
-			    	        		new FileOutputStream(file));
+			    		XMLWriter writer = new XMLWriter(
+			    	        		new FileOutputStream(file),output);
 			    		writer.write( doc );
+			    		writer.flush();
 			            writer.close();
-			                
+			             			            
 			        }else{
-			   
 			        		
 			        		Node node_xin=node.selectSingleNode("/tree/brand[@name='"+brand+"']/performance[@name='"+newtag+"']");
 			        		if(node_xin!=null){
@@ -189,8 +204,9 @@ public class judgeP {
 			        	            ((Element)node_xin).setAttributeValue("weight", weight);
 			        	            OutputFormat output=OutputFormat.createPrettyPrint();
 			        	            output.setEncoding("utf-8");
-			        	            XMLWriter writer=new XMLWriter(new FileOutputStream(file));
+			        	            XMLWriter writer=new XMLWriter(new FileOutputStream(file),output);
 			        	            writer.write(doc);
+			        	            writer.flush();
 			        	            writer.close();
 			        			
 			        		}else{
@@ -202,8 +218,9 @@ public class judgeP {
 			        			OutputFormat output=OutputFormat.createPrettyPrint();
 			            		output.setEncoding("utf-8");//输出的编码utf-8
 			            		 XMLWriter writer = new XMLWriter(
-			            	        		new FileOutputStream(file));
+			            	        		new FileOutputStream(file),output);
 			            		writer.write( doc );
+			            		writer.flush();
 			                    writer.close();
 			        		}
 			        		
@@ -213,14 +230,14 @@ public class judgeP {
 				}
 	            
 			}
+			}
 			}catch(Exception e){
 				e.printStackTrace();
 			}
 	}
 	
 	 public static List<Element> searchNodes(String xpath,Node node){
-	        xpath=xpath.replace("/", "/boss:");
-	         
+	        xpath=xpath.replace("/", "/boss:");	         
 	        HashMap xmlMap = new HashMap();  
 	        xmlMap.put("boss","http://www.inktomi.com/");
 	        XPath x = node.createXPath(xpath);
@@ -228,8 +245,7 @@ public class judgeP {
 	        return x.selectNodes(node);
 	    }
 	    public static Node searchSingleNode(String xpath,Node node){
-	        xpath=xpath.replace("/", "/boss:");
-	         
+	        xpath=xpath.replace("/", "/boss:");	         
 	        HashMap xmlMap = new HashMap();  
 	        xmlMap.put("boss","http://www.inktomi.com/");
 	        XPath x = node.createXPath(xpath);

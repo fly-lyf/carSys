@@ -16,6 +16,7 @@ public class MyChartMouseListener implements ChartMouseListener {
     @Override
     public void chartMouseClicked(ChartMouseEvent arg0) {
         // TODO Auto-generated method stub
+    	System.out.println(typestr);
         if (!typestr.equals("emptyValue")) {
             showDetail_view sdv = new showDetail_view(typestr, level);
         }

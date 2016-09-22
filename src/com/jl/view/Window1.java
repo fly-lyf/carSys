@@ -159,6 +159,7 @@ public class Window1 extends JFrame implements ActionListener,MouseListener,Wind
 				//负面信息专题分析 所使用的面板
 				infoAnalysis_view ip3=new infoAnalysis_view ();
 				p3.add(ip3,"3");
+				common.infoA.put(3, ip3);
 /*				
 				//负面信息统计分析
 				infoAnalysis_view ip4=new infoAnalysis_view();
@@ -248,7 +249,7 @@ public class Window1 extends JFrame implements ActionListener,MouseListener,Wind
 		
 		int w=Toolkit.getDefaultToolkit().getScreenSize().width;
 		int h=Toolkit.getDefaultToolkit().getScreenSize().height;
-		//关闭窗口时退出
+		//关闭窗口是退出
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		addWindowListener(this);
 		this.setIconImage(titleIcon);

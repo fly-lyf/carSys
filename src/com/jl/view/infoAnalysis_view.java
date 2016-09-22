@@ -1,50 +1,131 @@
 package com.jl.view;
 
-import com.jl.extract.extract_de;
-import com.jl.tools.MyTools;
-import com.lyf.view.Data;
-import com.lyf.view.MyChartMouseListener;
-import com.lyf.view.MyPieDataset;
-import com.lyf.view.MyTreeList;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.PieDataset;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.*;
-import java.util.List;
-import javax.swing.*;
+import com.jl.classify.beginclassify;
+import com.jl.extract.extract_de;
+import com.jl.gpaApplication.testC;
+import com.jl.sql.CreateDatabase;
+import com.jl.tools.MyTools;
+import com.jl.tools.common;
+import com.lyf.view.*;
 
-
-import javax.swing.tree.DefaultMutableTreeNode;
-
-public class infoAnalysis_view extends JPanel implements ActionListener {
-
-    private ChartPanel chartPanel;
-
-    public infoAnalysis_view() {
-        this.setBackground(new Color(89, 194, 230));
-        JPanel headPane = new JPanel();
-        JPanel treePane = new JPanel();
-        JPanel chartPane = new JPanel();
-        JLabel jl1 = new JLabel("汽车产品信息舆情分析");
-        jl1.setFont(MyTools.f6);
-        jl1.setForeground(Color.WHITE);
-        headPane.add(jl1);
-
+public class infoAnalysis_view extends JPanel implements ActionListener{
+   JPanel kz_analysis,kz_title,kz_button;
+   JButton jb_start,jb_stop;
+   JLabel jl_title,jl_count;
+   
+   JPanel kz_dictionary;
+   JLabel label_dictionary;
+   JButton load_dictionary,delete_dictionary;
+   
+    ChartPanel chartPanel;
+    
+    JPanel headPane;
+    JPanel treePane;
+    JPanel chartPane;
+    JPanel zongCenter;
+    JLabel jl1;
+    
+    MyPieDataset pie ;
+   
+    JTree tree ;
+    MyTreeList treeList;
+   
+   public void flush_dicLabel(){
+	   label_dictionary.setText("极性词典创建完成");
+   }
+   
+   public void flush_count(int i){
+	   jl_count.setText("已经分析完"+i+"条信息");
+   }
+   
+   
+   
+   public infoAnalysis_view(){
+	  
+	   //上面的面板控制
+	   kz_title=new JPanel();
+	   jl_title=new JLabel("汽车负面产品信息汇总");
+	   jl_title.setFont(MyTools.f6);
+	   jl_title.setForeground(Color.WHITE);
+	   kz_title.add(jl_title);
+	   kz_title.setBackground(new Color(89,194,230));
+	  
+	   kz_button=new JPanel();
+	   jb_start=new JButton("开始分析");
+	   jb_start.addActionListener(this);
+	   jb_start.setActionCommand("analysis_start");
+	   
+	   jb_stop=new JButton("停止分析");
+	   jb_stop.addActionListener(this);
+	   jb_stop.setActionCommand("analysis_stop");
+	   
+	   jl_count=new JLabel();
+	   jl_count.setFont(MyTools.f6);
+	   jl_count.setForeground(Color.WHITE);
+	   
+	   kz_button.add(jb_start);
+	   kz_button.add( jb_stop);
+	   kz_button.add(jl_count);
+	   kz_button.setBackground(new Color(89,194,230));
+	   
+	   
+	   kz_analysis=new JPanel();
+	   kz_analysis.setLayout(new BorderLayout());	
+	   kz_analysis.add(kz_title,BorderLayout.NORTH);
+	   kz_analysis.add(kz_button,BorderLayout.CENTER);
+	   kz_analysis.setBackground(new Color(89,194,230));
+	   
+	   //中间的面板
+	   zongCenter =new JPanel();
+	   headPane=new JPanel();
+       treePane = new JPanel();
+       chartPane = new JPanel();
+       
+	   jl1 = new JLabel("汽车产品信息舆情分析");
+       jl1.setFont(MyTools.f6);
+       jl1.setForeground(Color.WHITE);
+       headPane.add(jl1);
+       
         //饼图
-        MyPieDataset pie = new MyPieDataset();
+        pie = new MyPieDataset();
 
         //树形列表
-        MyTreeList treeList = new MyTreeList();
-        JTree tree = treeList.createTree();
+        treeList = new MyTreeList();
+        tree = treeList.createTree();
         tree.addTreeSelectionListener(e -> {
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
             if (!node.getUserObject().equals("车型")) {
@@ -75,60 +156,187 @@ public class infoAnalysis_view extends JPanel implements ActionListener {
                     this.remove(this.chartPanel);
                 }
                 this.chartPanel = chartPanel;
-                this.add(chartPanel, BorderLayout.CENTER);
+                zongCenter.add(chartPanel, BorderLayout.CENTER);
             }
         });
 
 
-        this.setLayout(new BorderLayout());
+        zongCenter.setLayout(new BorderLayout());
 
         headPane.setBackground(new Color(89, 194, 230));
-        this.add(headPane, BorderLayout.NORTH);
+        zongCenter.add(headPane, BorderLayout.NORTH);
 
         treePane.setLayout(new FlowLayout(FlowLayout.LEFT));
         treePane.add(new JLabel());
         treePane.add(tree);
         treePane.setBackground(Color.WHITE);
-        treePane.setPreferredSize(new Dimension(200, this.getHeight()));
-        this.add(treePane, BorderLayout.WEST);
-    }
+        treePane.setPreferredSize(new Dimension(200, this.getHeight())); 
+        zongCenter.add(treePane, BorderLayout.WEST);
+      
+       
+	   //下面的面板控制
+	   kz_dictionary=new JPanel();
+	   load_dictionary=new JButton("创建极性词典");
+	   load_dictionary.addActionListener(this);
+	   load_dictionary.setActionCommand("dictionary");
+	   delete_dictionary=new JButton("删除极性词典");
+	   delete_dictionary.addActionListener(this);
+	   delete_dictionary.setActionCommand("delete");
+	   
+	   label_dictionary=new JLabel();
+	   label_dictionary.setFont(MyTools.f6);
+	   label_dictionary.setForeground(Color.WHITE);
+	   kz_dictionary.add(load_dictionary);
+	   kz_dictionary.add(delete_dictionary);
+	   kz_dictionary.add(label_dictionary);
+	   kz_dictionary.setBackground(new Color(89,194,230));
+	   
+	   this.setLayout(new BorderLayout());
+	   this.add(kz_analysis,BorderLayout.NORTH);
+	   this.add(zongCenter,BorderLayout.CENTER);
+	   this.add(kz_dictionary,BorderLayout.SOUTH);
+	   this.setBackground(new Color(89,194,230));
+   }
+@Override
+public void actionPerformed(ActionEvent e) {
+	if(e.getActionCommand().equals("analysis_start")){
+         System.out.println("开始分析");
+         boolean flag=deleteFile("setConfig/result.xml");
+         if(flag==true){
+        	 System.out.println("文件删除成功");
+         }
+         try{
+         createFile("setConfig/result.xml");
+         }catch(Exception e2)
+         {
+        	 e2.printStackTrace();
+         }
+            extract_de de=new extract_de();
+			de.setFlag(true);
+		    new Thread(de).start();
+		    common.thread_ex.put("th", de);
+         
+	}
+	if(e.getActionCommand().equals("analysis_stop")){
+         System.out.println("终止分析");
+          extract_de de=common.thread_ex.get("th");	
+		  de.stopCurrentThread();
+	}
+	if(e.getActionCommand().equals("dictionary")){
+		label_dictionary.setText("开始创建极性词典");
+		System.out.println("加载词典");
+		testC bc=new testC();
+   	    Thread a=new Thread(bc);
+   	    a.start();
+	}
+	if(e.getActionCommand().equals("delete")){
+	    	System.out.println("删除极性词典");
+	   try{
+			CreateDatabase cd= new CreateDatabase();		
+			ArrayList tablename = extractXingNengTable();
+			for(int tn=0;tn<tablename.size();tn++){
+				cd.deleteTable(tablename.get(tn).toString());
+			}
+			cd.Close();          //为每个产品属性创建一个极性词表
+			label_dictionary.setText("极性词典已经全部删除");
+	   }catch(Exception e1){
+		    e1.printStackTrace();
+	   }
+	}
+	
+	
+}
+//读取table字段属性
+	public ArrayList extractXingNengTable() {
+		// 获取属性值
+		SAXReader reader = new SAXReader();
+        File file=new File("setConfig/sim.xml");
+		Document doc;
+		List<Element> result_Nodes;
+		ArrayList list1 = new ArrayList();
+		try {
+			doc = reader.read(file);
+			    List<Element> result= doc.selectNodes("/words/performance");
+					
+	            for(Element subnode:result){                
+	            	String str=subnode.attributeValue("table");
+	                list1.add(str);
+	            }
+		} catch (DocumentException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		return list1;
+	}
+	
+	//删除原有的result.xml文件
+	public boolean deleteFile(String sPath) {  
+	    boolean flag = false;  
+	    File file = new File(sPath);  
+	    // 路径为文件且不为空则进行删除  
+	    if (file.isFile() && file.exists()) {  
+	        file.delete();  
+	        flag = true;  
+	    }  
+	    return flag;  
+	}
+	
+	//创建初始文件
+	public void  createFile(String sPath) throws Exception {  
+	     File f=new File(sPath);
+	     OutputStreamWriter osw=new OutputStreamWriter(new FileOutputStream(f),"utf-8");
+		 BufferedWriter bosw=new BufferedWriter(osw);
+		 bosw.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+		 bosw.newLine();
+		 bosw.write("<tree >");
+		 bosw.newLine();
+		 bosw.write("</tree>");
+		 bosw.newLine();
+		 bosw.close();
+		 osw.close();
+	}
+	
+	
+	//获取节点 修改
+	 public static HashMap<String, Integer> getNodes(String File, String xpath, boolean hasChild) {
+		   
+		    System.out.println("********调用了获取节点的程序**********");		 
+	        //获取属性值
+	        SAXReader reader = new SAXReader();
+	        File file = new File(File);
+	        Document doc;
+	        List<Element> brandOrTypeNodes;
+	        HashMap<String, Integer> resultMap = new HashMap<>();
+	        try {
+	            doc = reader.read(file);
+	            Element root = doc.getRootElement();
+	           // System.out.println("xpath路径："+xpath);
+	          //  brandOrTypeNodes = extract_de.searchNodes(xpath, doc);  
+	             brandOrTypeNodes = doc.selectNodes(xpath);
+	            
+	            for (Element brandOrTypeNode : brandOrTypeNodes) {
+	            	
+	                List<Element> list = new ArrayList<>();	                
+	              //  list = extract_de.searchNodes("./" + "performance", brandOrTypeNode);
+	                list =brandOrTypeNode.selectNodes(xpath+"/performance");
+	                Integer count;
+	                for (int j = 0; j < list.size(); j++) {
+	                    Element performanceNode = list.get(j);
+	                    String weight = performanceNode.attributeValue("weight");
+	                    String name = performanceNode.attributeValue("name");
+	                    count = weight.split(";").length;
+	                    if (resultMap.get(name) != null) {
+	                        resultMap.put(name, resultMap.get(name) + count);
+	                    } else {
+	                        resultMap.put(name, count);
+	                    }
+	                }
+	            }
+	        } catch (DocumentException e) {
+	            e.printStackTrace();
+	        }
+	        return resultMap;
+	    }
+	 
 
-    public HashMap<String, Integer> getNodes(String File, String xpath, boolean hasChild) {
-        //获取属性值
-        SAXReader reader = new SAXReader();
-        java.io.File file = new File(File);
-        Document doc;
-        List<Element> brandOrTypeNodes;
-        HashMap<String, Integer> resultMap = new HashMap<>();
-        try {
-            doc = reader.read(file);
-            brandOrTypeNodes = extract_de.searchNodes(xpath, doc.getRootElement());
-            for (Element brandOrTypeNode : brandOrTypeNodes) {
-                List<Element> list = new ArrayList<>();
-                list = extract_de.searchNodes("./" + "performance", brandOrTypeNode);
-
-                Integer count;
-                for (int j = 0; j < list.size(); j++) {
-                    Element performanceNode = list.get(j);
-                    String weight = performanceNode.attributeValue("weight");
-                    String name = performanceNode.attributeValue("name");
-                    count = weight.split(";").length;
-                    if (resultMap.get(name) != null) {
-                        resultMap.put(name, resultMap.get(name) + count);
-                    } else {
-                        resultMap.put(name, count);
-                    }
-                }
-            }
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        }
-        return resultMap;
-    }
-
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }

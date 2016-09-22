@@ -3,24 +3,29 @@ package com.jl.gpaApplication;
 import java.util.ArrayList;
 
 import com.jl.extract.IKAnalysisSplit;
+import com.jl.tools.common;
+import com.jl.view.infoAnalysis_view;
 
-public class testC {
+public class testC implements Runnable{
 
 	/**
 	 * @param args
 	 * @throws Exception 
 	 */
-	public static void main(String[] args) throws Exception {
+	public void run() {
+		try{
 		  IKAnalysisSplit.dictionary();  //添加外部字典
-		  
-		  
-		  
+		  		  
 		  String  name1="Seats";   //创建性能指标表名
 		  ArrayList positive1=new ArrayList();   //指标中正极性词
 		  ArrayList negative1=new ArrayList();   //指标中负极性词
+		  positive1.add("好看");
+		  positive1.add("喜欢");
 		  positive1.add("舒适");
 		  positive1.add("柔软");
 		  negative1.add("狭窄");
+		  negative1.add("难看");
+		  negative1.add("丑");
 		  System.out.println("polar1");
 		  Polarity po1=new Polarity(name1, positive1, negative1);
 		  Thread a1=new Thread(po1);
@@ -33,6 +38,7 @@ public class testC {
 			 positive2.add("强劲");
 			 positive2.add("十足");
 			 positive2.add("可以");
+		     positive2.add("好");
 			 positive2.add("快");
 			 negative2.add("弱");
 			 negative2.add("很弱");
@@ -46,12 +52,16 @@ public class testC {
 			 a2.start();		 
 			 a2.join();
 			 
-			 String  name3="dazhong";   //创建性能指标表名
+			 String  name3="Prize";   //创建性能指标表名
 			 ArrayList positive3=new ArrayList();   //指标中正极性词
 			 ArrayList negative3=new ArrayList();   //指标中负极性词
-			 positive3.add("很棒");
-			 positive3.add("普遍");
-			 negative3.add("不普遍");			
+			 positive3.add("便宜");
+			 positive3.add("低");
+			 negative3.add("昂贵");
+			 negative3.add("高");
+			 negative3.add("有点贵");
+			 negative3.add("贵");
+			 negative3.add("太多");
 			 System.out.println("polar3");
 			 Polarity po3=new Polarity(name3, positive3, negative3);
 			 Thread a3=new Thread(po3);
@@ -62,16 +72,20 @@ public class testC {
 			 ArrayList positive4=new ArrayList();   //指标中正极性词
 			 ArrayList negative4=new ArrayList();   //指标中负极性词
 			 positive4.add("美观");
+			 positive4.add("创新");
 			 positive4.add("大方");
-			 positive4.add("独特");
 			 positive4.add("漂亮");
-			 positive4.add("很漂亮");
+			 positive4.add("高端");
+			 positive4.add("霸气");
+			 positive4.add("上档次");
 			 positive4.add("好看");
 			 negative4.add("丑");
 			 negative4.add("难看");
-			 negative4.add("很难看");
+			 negative4.add("老气");
 			 negative4.add("山寨");
 			 negative4.add("模仿");
+			 negative4.add("低端");
+			 negative4.add("保守");
 			 System.out.println("polar4");
 			 Polarity po4=new Polarity(name4, positive4, negative4);
 			 Thread a4=new Thread(po4);
@@ -82,10 +96,15 @@ public class testC {
 			 ArrayList positive5=new ArrayList();   //指标中正极性词
 			 ArrayList negative5=new ArrayList();   //指标中负极性词
 			 positive5.add("小");
+			 positive5.add("好");
 			 positive5.add("不大");
 			 negative5.add("特别大");
 			 negative5.add("大");
 			 negative5.add("有点大");
+			 negative5.add("明显");
+			 negative5.add("突出");
+			 negative5.add("尤为");
+			 negative5.add("差");
 			 System.out.println("polar5");
 			 Polarity po5=new Polarity(name5, positive5, negative5);
 			 Thread a5=new Thread(po5);
@@ -97,9 +116,11 @@ public class testC {
 			 ArrayList negative6=new ArrayList();   //指标中负极性词
 			 positive6.add("大");
 			 positive6.add("更大");
+			 positive6.add("强");
 			 positive6.add("很大") ;
 			 negative6.add("小");
-			 negative6.add("很小");		 
+			 negative6.add("很小");	
+			 negative6.add("弱");		
 			 System.out.println("polar6");
 			 Polarity po6=new Polarity(name6, positive6, negative6);
 			 Thread a6=new Thread(po6);
@@ -143,11 +164,13 @@ public class testC {
 			 ArrayList positive9=new ArrayList();   //指标中正极性词
 			 ArrayList negative9=new ArrayList();   //指标中负极性词
 			 positive9.add("好") ;
+			 positive9.add("高") ;
 			 positive9.add("不错") ;
 			 positive9.add("掌握") ;
 			 negative9.add("一般");
 			 negative9.add("差");
 			 negative9.add("不好");
+			 negative9.add("低");
 			 System.out.println("polar9");
 			 Polarity po9=new Polarity(name9, positive9, negative9);
 			 Thread a9=new Thread(po9);
@@ -198,8 +221,18 @@ public class testC {
 			 ArrayList positive13=new ArrayList();   //指标中正极性词
 			 ArrayList negative13=new ArrayList();   //指标中负极性词
 			 positive13.add("重") ;
+			 positive13.add("漂亮") ;
+			 positive13.add("精细") ;
+			 positive13.add("提升") ;
+			 positive13.add("大") ;
+			 positive13.add("高端") ;
+			 positive13.add("高");
 			 negative13.add("轻");
 			 negative13.add("薄");
+			 negative13.add("下降");
+			 negative13.add("低");
+			 negative13.add("低端");
+			 negative13.add("小") ;
 			 System.out.println("polar13");
 			 Polarity po13=new Polarity(name13, positive13, negative13);
 			 Thread a13=new Thread(po13);
@@ -220,13 +253,16 @@ public class testC {
 			 a14.join();
 			 
 		  
-		 String  name15="Chassis";   //创建性能指标表名
+		 String  name15="Chassis";   //创建性能指标表名    底盘
 		 ArrayList positive15=new ArrayList();   //指标中正极性词
 		 ArrayList negative15=new ArrayList();   //指标中负极性词
 		 positive15.add("高") ;
+		 positive15.add("好"); 
 		 positive15.add("比较高") ;
 		 negative15.add("低");
 		 negative15.add("太低");
+		 negative15.add("烂透");
+		 negative15.add("差");
 		 System.out.println("polar15");
 		 Polarity po15=new Polarity(name15, positive15, negative15);
 		 Thread a15=new Thread(po15);
@@ -462,6 +498,7 @@ public class testC {
 			 ArrayList positive31=new ArrayList();   //指标中正极性词
 			 ArrayList negative31=new ArrayList();   //指标中负极性词
 			 positive31.add("省油") ;
+			 positive31.add("有效果") ;
 			 negative31.add("没效果");
 			 negative31.add("费油");
 			 negative31.add("耗油");
@@ -488,7 +525,9 @@ public class testC {
 			 ArrayList positive33=new ArrayList();   //指标中正极性词
 			 ArrayList negative33=new ArrayList();   //指标中负极性词
 			 positive33.add("多") ;
+			 positive33.add("好") ;
 			 negative33.add("少");
+			 positive33.add("不好") ;
 			 System.out.println("polar33");
 			 Polarity po33=new Polarity(name33, positive33, negative33);
 			 Thread a33=new Thread(po33);
@@ -578,11 +617,15 @@ public class testC {
 			 ArrayList positive40=new ArrayList();   //指标中正极性词
 			 ArrayList negative40=new ArrayList();   //指标中负极性词
 			 positive40.add("好");
+			 positive40.add("新");
+			 positive40.add("前卫");
+			 positive40.add("创新");
 			 positive40.add("多");
 			 positive40.add("合理");
 			 negative40.add("不好");
 			 negative40.add("少");
-			 negative40.add("不合理");	 
+			 negative40.add("不合理");
+			 negative40.add("旧");
 			 System.out.println("polar40");
 			 Polarity po40=new Polarity(name40, positive40, negative40);
 			 Thread a40=new Thread(po40);
@@ -1001,8 +1044,44 @@ public class testC {
 			 Polarity po72=new Polarity(name72, positive72, negative72);
 			 Thread a72=new Thread(po72);
 			 a72.start();		 
-			 a72.join();		  
-	  
+			 a72.join();	
+			 
+			 String  name73="Brand";   //创建性能指标表名
+			 ArrayList positive73=new ArrayList();   //指标中正极性词
+			 ArrayList negative73=new ArrayList();   //指标中负极性词
+			 positive73.add("老") ;
+			 positive73.add("大") ;
+			 negative73.add("新");
+			 positive73.add("小") ;
+			 System.out.println("polar73");
+			 Polarity po73=new Polarity(name73, positive73, negative73);
+			 Thread a73=new Thread(po73);
+			 a73.start();		 
+			 a73.join();
+			 
+			 String  name74="Inside";   //创建性能指标表名
+			 ArrayList positive74=new ArrayList();   //指标中正极性词
+			 ArrayList negative74=new ArrayList();   //指标中负极性词
+			 positive74.add("高") ;
+			 positive74.add("喜欢") ;
+			 positive74.add("漂亮") ;
+			 positive74.add("高端") ;
+			 negative74.add("低");
+			 negative74.add("低端") ;
+			 negative74.add("差强人意") ;
+			 negative74.add("丑") ;
+			 System.out.println("polar74");
+			 Polarity po74=new Polarity(name74, positive74, negative74);
+			 Thread a74=new Thread(po74);
+			 a74.start();		 
+			 a74.join();
+			 
+			 System.out.println("词典创建完成");
+			 infoAnalysis_view info=common.infoA.get(3);
+			 info.flush_dicLabel();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		 
 	}
 

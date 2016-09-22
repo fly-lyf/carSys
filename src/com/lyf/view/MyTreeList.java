@@ -56,9 +56,10 @@ public class MyTreeList{
         HashMap<String, String[]> resultMap = new HashMap<>();
         try {
             doc = reader.read(file);
-            brandNode = extract_de.searchNodes("/tree/brand", doc.getRootElement());
+            brandNode = doc.selectNodes("/tree/brand");
             for (Element result : brandNode) {
-                List list = extract_de.searchNodes("./" + "type", result);
+            	String brand_name=result.attributeValue("name");
+                List list = doc.selectNodes("/tree/brand[@name='"+brand_name+"']/type");
                 String[] types = new String[list.size()];
                 for (int j = 0; j < list.size(); j++) {
                     Element typeNode = (Element) list.get(j);

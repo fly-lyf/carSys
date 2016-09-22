@@ -89,11 +89,8 @@ public class beginclassify extends Thread{
 		    	
 		    }
 		    System.out.println(common.productWord);
-		    
-		 
-		   int i=0;
-		
-		   
+		    		 
+		   int i=0;		   
 		   while(sc.queryForTotalRows()>0&&flag){			       
 		    	Product info=sc.queryForOneProduct();
 		    	System.out.println(info.getCONTENT());

@@ -70,16 +70,13 @@ public class CreateDatabase {
 		 jdbcTemplate.execute(createTable);  
 	}
     
-    public void createTTables(){
-		String createTable="CREATE TABLE if Not EXISTS `xuanci` ("
-				  +"`id` INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT  COMMENT 'id号',"		
-				  +"`name1` varchar(100) DEFAULT NULL ,"
-				  +"`name2` varchar(100) DEFAULT NULL ,"
-				  +"`probility` double DEFAULT NULL"
-				  +") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-		 System.out.println("调用创建数据表函数"+createTable);
-		 jdbcTemplate.execute(createTable);   
-	}
+
+    
+    public void deleteTable(String name){
+    	 String dele="DROP TABLE IF EXISTS "+name+";";
+    	 System.out.println("调用删除数据表函数"+dele);
+    	 jdbcTemplate.execute(dele); 
+    }
 
 	public static void main(String[] args) throws Exception{
 		CreateDatabase b=new CreateDatabase();

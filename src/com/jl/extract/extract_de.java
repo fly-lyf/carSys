@@ -1,25 +1,41 @@
 package com.jl.extract;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.XPath;
+import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
 
 import com.jl.domain.Product;
 import com.jl.productSql.productService;
 import com.jl.sql.CreateDatabase;
+import com.jl.tools.common;
+import com.jl.view.infoAnalysis_view;
 
 import edu.fudan.util.exception.LoadModelException;
 
 public class extract_de implements Runnable{
    
+	private volatile boolean flag;  //设置以便临时中断分类
+	 
+	public void setFlag(boolean flag) {
+	        this.flag = flag;
+	    }
+	    
+	public synchronized void stopCurrentThread() {
+	        this.flag = false;
+	    }
+	
 	
 	public void run(){
 		
@@ -32,15 +48,16 @@ public class extract_de implements Runnable{
 		}
 		cd.Close();          //为每个产品属性创建一个极性词表
 		
+		
+		IKAnalysisSplit.dictionary();  //加载外部词典
+		
 		productService ps=new productService();
 		int count=ps.queryForTotalRows();
-		for(int i=0;i<count;i++){
+		int i=0;
+		while(i<count&&flag){
 			Product p=ps.queryForProductID(i+1);
 			String text=p.getCONTENT();
 			String[] aa=text.split("。");//拆分句子
-			for (int j = 0; j < aa.length ; j++) {
-				System.out.println("拆分后的句子aa:" + aa[j]);
-			}
 			for(int j=0;j<aa.length;j++){
 				if(aa[j].length() <= 3072){
 				String splitsen=IKAnalysisSplit.IKAnalysis(aa[j]);//完成每个句子的分词
@@ -49,16 +66,21 @@ public class extract_de implements Runnable{
 					for(int t=0;t<al.size();t++){
 						String elem=(String)al.get(t);
 						//划分为短句
-						planA(elem,i);
+						planA(elem,i+1);
 				}		
 				}
 			}
-		}
-		}
+		  }
+			i++;
+			infoAnalysis_view iv=common.infoA.get(3);
+			iv.flush_count(i);
+		}                   //
+		
 		}catch(Exception e){
 			 e.printStackTrace();
 		}
 	}
+	
 	//只含有汽车品牌名的句子
 	public void planA_sub1(String elem,String brand,int number){		 
 		 ArrayList xin=sortXinneng(elem,brand);
@@ -69,60 +91,27 @@ public class extract_de implements Runnable{
 		 ArrayList xinneng=extractXingNeng(brand);							 
 		 for(int y=0;y<xinneng.size();y++){      //如果性能返回斯空，再查找品牌
 			 int m=newSen.indexOf((String)xinneng.get(y));
-			 if(m!=-1){		
-//				 String newSen1=newSen.replaceAll(" ", "");
-//				 System.out.println(newSen1);
-//				 
-//				 DepParser de=new DepParser();
-				String tag=(String)xinneng.get(y);
-				String[] tokens = newSen.split(" ");
-				System.out.println(newSen);
-				 try {
-					 if(tokens.length < 5){
-						 for(int i=0;i<tokens.length-1;i++){
-							    String des = tokens[i+1];
-//								System.out.println(tag+":"+des);//将结果添加回CarOntology
-								judgeP jp=new judgeP();
-								jp.judgeS2(brand, tag, des,number);
-						 }
-					 }else if(tokens.length >= 5){
-						 for(int i=0;i<tokens.length-1;i++){
-							    String des = tokens[i+1];
-//								System.out.println(tag+":"+des);//将结果添加回CarOntology
-								judgeP jp=new judgeP();
-								jp.judgeS2(brand, tag, des,number);
-						 }
-					 }
+			 if(m!=-1){
+				 try{
+				 String newSen1=newSen.replaceAll(" ", "");
+				 double fo_quan=1.0;
+				    int no=newSen1.indexOf("不");    //查看句子中是否带有否定词“不”
+				    int noh=newSen1.indexOf("不太");
+				    if(noh!=-1){
+				    	fo_quan=-0.5;
+				    }
+				    if(no!=-1){
+				    	fo_quan=-1;
+				    }			 
+				 DepParser de=new DepParser();
+				 String tag=(String)xinneng.get(y);   //评价的具体产品属性
 					//句法分析
-//					String answer1=de.deparser(newSen1,tag );
-//					if(!(answer1.equals(""))){
-//						String[] tt=answer1.split(" ");
-//						if(tt.length==2){
-//						String des1=tt[0];
-//						String des2=tt[1];
-//						if(des1.equals("")||des1==null){
-//							System.out.println(des2);
-//						}else{
-//							if(des2.equals("")||des2==null){
-//								
-//							}else{
-//								if(des1.equals(des2)){									
-//									System.out.println(tag+":"+des1);//将结果添加回CarOntology
-//									judgeP jp=new judgeP();
-//									jp.judgeS2(brand, tag, des1,number);
-//									
-//								}else{
-//									//处理
-//									String des=selectPro(tag,des1,des2);									
-//									System.out.println(tag+":"+des);//将结果添加回CarOntology
-//									judgeP jp=new judgeP();
-//									jp.judgeS2(brand, tag, des,number);
-//									
-//								}
-//							}
-//						}
-//					}
-//					}
+					String answer1=de.deparser(newSen1,tag );  //获得情感词
+					if(!(answer1.equals(""))){
+						  judgeP jp=new judgeP();
+						  System.out.println("情感词："+ answer1);
+						  jp.judgeS2(brand, tag, answer1,number,fo_quan);						
+					}
 
 
 				} catch (Exception e) {
@@ -139,7 +128,7 @@ public class extract_de implements Runnable{
 	}
 
 	
-	//处理含有汽车品牌名的句子
+	//处理含有汽车品牌名和类型名的句子
    public void planA_sub2(String elem,String type,String brand,int number){
 		 ArrayList xin=sortTypeXinneng(elem,brand,type);	
 		 if(xin!=null){		 
@@ -147,63 +136,31 @@ public class extract_de implements Runnable{
 		 {
 		 String newSen=(String)xin.get(r);
 		 ArrayList xinneng=extractTypeXingNeng(brand,type);
-		 //System.out.println(xinneng);
-		 for(int y=0;y<xinneng.size();y++){      //如果性能返回斯空，再查找品牌
+		 for(int y=0;y<xinneng.size();y++){      //如果性能返回斯空，再查找品牌			 
 			 int m=newSen.indexOf((String)xinneng.get(y));
-			 if(m!=-1){		
-//				 String newSen1=newSen.replaceAll(" ", "");
-//				 DepParser de=new DepParser();
+			 if(m!=-1){
+			    try{
+				    String newSen1=newSen.replaceAll(" ", "");
+				    double fo_quan=1.0;
+				    int no=newSen1.indexOf("不");    //查看句子中是否带有否定词“不”	
+				    int noh=newSen1.indexOf("不太");
+				    if(noh!=-1){
+				    	fo_quan=-0.5;
+				    }
+				    if(no!=-1){
+				    	fo_quan=-1;
+				    }
+				    DepParser de=new DepParser();
 					String tag=(String)xinneng.get(y);
-					String[] tokens = newSen.split(" ");
-					System.out.println(newSen);
-					 try {
-						 if(tokens.length < 5){
-							 for(int i=0;i<tokens.length-1;i++){
-								    String des = tokens[i+1];
-//									System.out.println(tag+":"+des);//将结果添加回CarOntology
-									judgeP jp=new judgeP();
-									jp.judgeS2(brand, tag, des,number);
-							 }
-						 }else if(tokens.length >= 5){
-							 for(int i=0;i<tokens.length-1;i++){
-								 String des = tokens[i+1];
-//									System.out.println(tag+":"+des);//将结果添加回CarOntology
-									judgeP jp=new judgeP();
-									jp.judgeS2(brand, tag, des,number);
-							 }
-						 }
-		
-//				 try {
-//					String tag=(String)xinneng.get(y);
-//					String answer1=de.deparser(newSen1,tag);
-//					
-//					if(!(answer1.equals(""))){
-//						String[] tt=answer1.split(" ");
-//						if(tt.length==2){
-//						String des1=tt[0];
-//						String des2=tt[1];
-//						if(des1.equals("")||des1==null){
-//							System.out.println(des2);
-//						}else{
-//							if(des2.equals("")||des2==null){
-//								
-//							}else{
-//								if(des1.equals(des2)){									
-//									System.out.println(brand+"-"+type+":"+tag+"-"+des1);//将结果添加回CarOntology
-//									judgeP jp=new judgeP();
-//									jp.judgeS1(brand, type, tag, des1,number);
-//									
-//								}else{
-//									String des=selectPro(tag,des1,des2);								
-//									System.out.println(brand+"-"+type+":"+tag+"-"+des);//将结果添加回CarOntology
-//									judgeP jp=new judgeP();
-//									jp.judgeS1(brand, type, tag, des,number);
-//									
-//								}
-//							}
-//						}
-//					}
-//					}
+					//句法分析
+					String answer1=de.deparser(newSen1,tag );
+					if(!(answer1.equals(""))){
+						 judgeP jp=new judgeP();
+						 System.out.println("情感词："+ answer1);
+						 jp.judgeS1(brand,type,tag,answer1,number,fo_quan);
+						
+					}
+
 
 
 				} catch (Exception e) {
@@ -221,7 +178,7 @@ public class extract_de implements Runnable{
 	
     //只找到每个句子评价的汽车品牌和型号	
 	public void planA(String elem,int number){	
-		
+		System.out.println("每个切分后短句子的内容："+elem);
 		ArrayList brand=extractBrand();//										
 		for(int x=0;x<brand.size();x++)
 		{
@@ -232,6 +189,8 @@ public class extract_de implements Runnable{
 			 String flag="";
 			 for(int r=0;r<al2.size();r++){
 				 String type=(String)al2.get(r);
+				 type=type.toUpperCase(); //防止出现的车型由于大小写的原因没有识别出来，所以将俩个都转换为大写识别
+				 elem=elem.toUpperCase();
 				 int em=elem.indexOf(type);
 				 if(em!=-1){
 					 flag=type;
@@ -253,22 +212,6 @@ public class extract_de implements Runnable{
 	
 	
 	
-//	public String selectPro(String tag,String des1,String des2){   //选择词的极性词
-//		String des="";
-//		SqlHelper sh=new SqlHelper();
-//		Integer d1=sh.selectCP(tag, des1);
-//		Integer d2=sh.selectCP(tag, des2);
-//		if(d1==0&&d2==0){
-//			des=des1;
-//		}else{
-//			if(d1>=d2){
-//				des=des1;
-//			}else{
-//				des=des2;
-//			}
-//		}
-//		return des;
-//	}
 	
 	public ArrayList sortTypeXinneng(String str,String brand,String type){
 		ArrayList result=new ArrayList();
@@ -404,15 +347,17 @@ public class extract_de implements Runnable{
 	
 	//把句子中含有多个汽车品牌分解成每个短句只有一个汽车品牌
 	public ArrayList sortWords(String str){
+		
 		ArrayList result=new ArrayList();
-		ArrayList l1=new ArrayList();
+		ArrayList l1=new ArrayList();  //存储所有的词
 		ArrayList num=new ArrayList();
+		
 		StringTokenizer fenxi=new StringTokenizer(str," ");
     	while(fenxi.hasMoreTokens()){
     		String ele=fenxi.nextToken();
     		l1.add(ele);
     	}
-    	ArrayList al=extractBrand();
+    	ArrayList al=extractBrand();  //存储所有的汽车品牌名称
     	for(int i=0;i<l1.size();i++){
     		for(int j=0;j<al.size();j++){
     			String str1=(String)l1.get(i);
@@ -422,10 +367,12 @@ public class extract_de implements Runnable{
     			}
     		}
     	}//把所有车名的位置存储到num链表里
-    	if(num.size()==0){
+    	
+    	if(num.size()==0){     //如果句子中没有车名
     		result=null;
-    		return result;
-    	}else if(num.size()==1)
+    		
+    	}
+    	if(num.size()==1)   //如果句子中有一个车名
     	{
     		int start=(Integer)num.get(0);
     		String back="";
@@ -438,9 +385,10 @@ public class extract_de implements Runnable{
     			}
     		}
     		result.add(back);
-    		return result;
+    		
     	}
-    	else{
+    	
+        if(num.size()>=2){
     	        int start=(Integer)num.get(0);
     	        for(int x=1;x<num.size();x++){
     		        int end=(Integer)num.get(x);
@@ -464,8 +412,10 @@ public class extract_de implements Runnable{
     	    		}
     	    		result.add(back2);
     	    		
-    	    		return result;
+    	    		
     	}
+        
+        return result;
 	}
 	
 	public ArrayList extractXingNeng(String brand){
@@ -484,18 +434,6 @@ public class extract_de implements Runnable{
              	list1.add(text);
             }
 
-//            List<Element> result_nodes=searchNodes("/tree/company/brand[@name='"+brand+"']",doc.getRootElement());
-//            for(Element result:result_nodes){                
-//                List list=searchNodes("./performance",result);               
-//                for(int j=0;j<list.size();j++)
-//                {
-//                	Element sen1=(Element)list.get(j);
-//                	String text=sen1.attributeValue("name");
-//                	ArrayList tong=getTong(text);
-//                	list1.addAll(tong);
-//                }
-//                
-//            }
         }
         catch (DocumentException e) {
             // TODO Auto-generated catch block
@@ -627,8 +565,7 @@ public class extract_de implements Runnable{
 	        return x.selectNodes(node);
 	    }
 	    public static Node searchSingleNode(String xpath,Node node){
-	        xpath=xpath.replace("/", "/boss:");
-	         
+	        xpath=xpath.replace("/", "/boss:");	         
 	        HashMap xmlMap = new HashMap();  
 	        xmlMap.put("boss","http://www.inktomi.com/");
 	        XPath x = node.createXPath(xpath);

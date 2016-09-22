@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import com.jl.classify.beginclassify;
+import com.jl.extract.extract_de;
+import com.jl.view.infoAnalysis_view;
 import com.jl.view.infoCollection_view;
 import com.jl.view.infoSummary_view;
 
@@ -13,8 +15,14 @@ public class common {
 	
 	public static HashMap<Integer,infoCollection_view> mp=new HashMap<Integer,infoCollection_view>();
 	public static HashMap<Integer,infoSummary_view>     infoS=new HashMap<Integer,infoSummary_view>();
+	public static HashMap<Integer,infoAnalysis_view>  infoA=new HashMap<Integer,infoAnalysis_view>();
 	
-	public static HashMap<String,beginclassify>   thread=new HashMap<String,beginclassify>();
+	public static HashMap<String,beginclassify>   thread=new HashMap<String,beginclassify>();  //存放分类的线程对象
+	public static HashMap<String,extract_de>   thread_ex=new HashMap<String,extract_de>();   //存放分析的线程对象
+	
+	
+	public static HashMap<String,Integer> analysis_point=new HashMap<String,Integer>();
+	
 	
 	public static ArrayList  words=new ArrayList();
 	public static ArrayList  newords=new ArrayList();

@@ -1,5 +1,6 @@
 package com.lyf.view;
 
+
 import java.awt.Font;
 
 import org.jfree.chart.JFreeChart;
@@ -10,16 +11,17 @@ import org.jfree.chart.title.TextTitle;
 public class SetFont {
 	public SetFont(JFreeChart chart){
 	  
-		Font titleFont = new Font("ºÚÌå", Font.BOLD, 20);  
+		Font titleFont = new Font("é»‘ä½“", Font.BOLD, 20);  
       TextTitle textTitle = chart.getTitle();  
-      textTitle.setFont(titleFont);// Îª±êÌâÉèÖÃÉÏ×ÖÌå  
+      textTitle.setFont(titleFont);// ä¸ºæ ‡é¢˜è®¾ç½®ä¸Šå­—ä½“  
         
-      Font plotFont = new Font("ËÎÌå", Font.PLAIN, 16);  
+      Font plotFont = new Font("å®‹ä½“", Font.PLAIN, 16);  
       PiePlot plot = (PiePlot) chart.getPlot();  
-      plot.setLabelFont(plotFont); // Îª±ıÍ¼ÔªËØÉèÖÃÉÏ×ÖÌå  
+      plot.setLabelFont(plotFont); // ä¸ºé¥¼å›¾å…ƒç´ è®¾ç½®ä¸Šå­—ä½“  
         
-      Font LegendFont = new Font("¿¬Ìå", Font.PLAIN, 18);  
+      Font LegendFont = new Font("æ¥·ä½“", Font.PLAIN, 18);  
       LegendTitle legend = chart.getLegend(0);  
-      legend.setItemFont(LegendFont);// ÎªÍ¼ÀıËµÃ÷ÉèÖÃ×ÖÌå 
+      legend.setItemFont(LegendFont);// ä¸ºå›¾ä¾‹è¯´æ˜è®¾ç½®å­—ä½“ 
 	}
 }
+

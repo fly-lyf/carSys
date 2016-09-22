@@ -14,28 +14,28 @@ public class JFreeChartTest
 {
     public static void main(String[] args)
     {
-        DefaultPieDataset dpd=new DefaultPieDataset(); //½¨Á¢Ò»¸öÄ¬ÈÏµÄ±ıÍ¼
-        JFreeChart chart=ChartFactory.createPieChart("Ä³¹«Ë¾ÈËÔ±×éÖ¯Êı¾İÍ¼",dpd,true,true,false); 
-        //¿ÉÒÔ²é¾ßÌåµÄAPIÎÄµµ,µÚÒ»¸ö²ÎÊıÊÇ±êÌâ£¬µÚ¶ş¸ö²ÎÊıÊÇÒ»¸öÊı¾İ¼¯£¬µÚÈı¸ö²ÎÊı±íÊ¾ÊÇ·ñÏÔÊ¾Legend£¬µÚËÄ¸ö²ÎÊı±íÊ¾ÊÇ·ñÏÔÊ¾ÌáÊ¾£¬µÚÎå¸ö²ÎÊı±íÊ¾Í¼ÖĞÊÇ·ñ´æÔÚURL
-        Font titleFont = new Font("ºÚÌå", Font.BOLD, 20);
+        DefaultPieDataset dpd=new DefaultPieDataset(); //å»ºç«‹ä¸€ä¸ªé»˜è®¤çš„é¥¼å›¾
+        JFreeChart chart=ChartFactory.createPieChart("æŸå…¬å¸äººå‘˜ç»„ç»‡æ•°æ®å›¾",dpd,true,true,false); 
+        //å¯ä»¥æŸ¥å…·ä½“çš„APIæ–‡æ¡£,ç¬¬ä¸€ä¸ªå‚æ•°æ˜¯æ ‡é¢˜ï¼Œç¬¬äºŒä¸ªå‚æ•°æ˜¯ä¸€ä¸ªæ•°æ®é›†ï¼Œç¬¬ä¸‰ä¸ªå‚æ•°è¡¨ç¤ºæ˜¯å¦æ˜¾ç¤ºLegendï¼Œç¬¬å››ä¸ªå‚æ•°è¡¨ç¤ºæ˜¯å¦æ˜¾ç¤ºæç¤ºï¼Œç¬¬äº”ä¸ªå‚æ•°è¡¨ç¤ºå›¾ä¸­æ˜¯å¦å­˜åœ¨URL
+        Font titleFont = new Font("é»‘ä½“", Font.BOLD, 20);
         TextTitle textTitle = chart.getTitle();
-        textTitle.setFont(titleFont);// Îª±êÌâÉèÖÃÉÏ×ÖÌå
+        textTitle.setFont(titleFont);// ä¸ºæ ‡é¢˜è®¾ç½®ä¸Šå­—ä½“
           
-        Font plotFont = new Font("ËÎÌå", Font.PLAIN, 16);  
+        Font plotFont = new Font("å®‹ä½“", Font.PLAIN, 16);  
         PiePlot plot = (PiePlot) chart.getPlot();  
-        plot.setLabelFont(plotFont); // Îª±ıÍ¼ÔªËØÉèÖÃÉÏ×ÖÌå
+        plot.setLabelFont(plotFont); // ä¸ºé¥¼å›¾å…ƒç´ è®¾ç½®ä¸Šå­—ä½“
 
-        Font LegendFont = new Font("¿¬Ìå", Font.PLAIN, 18);
+        Font LegendFont = new Font("æ¥·ä½“", Font.PLAIN, 18);
         LegendTitle legend = chart.getLegend(0);
-        legend.setItemFont(LegendFont);// ÎªÍ¼ÀıËµÃ÷ÉèÖÃ×ÖÌå
-        dpd.setValue("¹ÜÀí", 25);  //ÊäÈëÊı¾İ
-        dpd.setValue("ÊĞ³¡ÈËÔ±", 25);
-        dpd.setValue("¿ª·¢ÈËÔ±", 45);
-        dpd.setValue("ÆäËûÈËÔ±", 10);
-        ChartFrame chartFrame=new ChartFrame("Ä³¹«Ë¾ÈËÔ±×éÖ¯Êı¾İÍ¼",chart);
-        //chartÒª·ÅÔÚJavaÈİÆ÷×é¼şÖĞ£¬ChartFrame¼Ì³Ğ×ÔjavaµÄJframeÀà¡£¸ÃµÚÒ»¸ö²ÎÊıµÄÊı¾İÊÇ·ÅÔÚ´°¿Ú×óÉÏ½ÇµÄ£¬²»ÊÇÕıÖĞ¼äµÄ±êÌâ¡£
-        chartFrame.pack(); //ÒÔºÏÊÊµÄ´óĞ¡Õ¹ÏÖÍ¼ĞÎ
-        chartFrame.setVisible(true);//Í¼ĞÎÊÇ·ñ¿É¼û
+        legend.setItemFont(LegendFont);// ä¸ºå›¾ä¾‹è¯´æ˜è®¾ç½®å­—ä½“
+        dpd.setValue("ç®¡ç†", 25);  //è¾“å…¥æ•°æ®
+        dpd.setValue("å¸‚åœºäººå‘˜", 25);
+        dpd.setValue("å¼€å‘äººå‘˜", 45);
+        dpd.setValue("å…¶ä»–äººå‘˜", 10);
+        ChartFrame chartFrame=new ChartFrame("æŸå…¬å¸äººå‘˜ç»„ç»‡æ•°æ®å›¾",chart);
+        //chartè¦æ”¾åœ¨Javaå®¹å™¨ç»„ä»¶ä¸­ï¼ŒChartFrameç»§æ‰¿è‡ªjavaçš„Jframeç±»ã€‚è¯¥ç¬¬ä¸€ä¸ªå‚æ•°çš„æ•°æ®æ˜¯æ”¾åœ¨çª—å£å·¦ä¸Šè§’çš„ï¼Œä¸æ˜¯æ­£ä¸­é—´çš„æ ‡é¢˜ã€‚
+        chartFrame.pack(); //ä»¥åˆé€‚çš„å¤§å°å±•ç°å›¾å½¢
+        chartFrame.setVisible(true);//å›¾å½¢æ˜¯å¦å¯è§
         
     }
 }
