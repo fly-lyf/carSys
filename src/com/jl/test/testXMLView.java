@@ -23,11 +23,20 @@ import java.util.List;
 import javax.swing.*;
 
 
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 public class testXMLView extends JPanel implements ActionListener {
 
     private ChartPanel chartPanel;
+
+    //饼图
+    MyPieDataset pie = new MyPieDataset();
+
+    //树形列表
+    MyTreeList treeList = new MyTreeList();
+    JTree tree = treeList.createTree();
 
     public testXMLView() {
     	
@@ -39,44 +48,40 @@ public class testXMLView extends JPanel implements ActionListener {
         jl1.setFont(MyTools.f6);
         jl1.setForeground(Color.WHITE);
         headPane.add(jl1);
+        tree.addTreeSelectionListener(new TreeSelectionListener() {
+            @Override
+            public void valueChanged(TreeSelectionEvent e) {
+                DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+                if (!node.getUserObject().equals("车型")) {
+                    String name = (String) node.getUserObject();
+                    Data[] data;
+                    HashMap<String, Integer> performances = new HashMap<String, Integer>();
+                    if (node.getLevel() == 1) {
+                        //品牌名
+                        performances = testXMLView.this.getNodes("setConfig/result.xml", "/tree/brand[@name='" + name + "']", true);
+                    } else if (node.getLevel() == 2) {
+                        //车型名
+                        performances = testXMLView.this.getNodes("setConfig/result.xml", "/tree/brand/type[@name='" + name + "']", false);
+                        data = new Data[performances.size()];
 
-        //饼图
-        MyPieDataset pie = new MyPieDataset();
-
-        //树形列表
-        MyTreeList treeList = new MyTreeList();
-        JTree tree = treeList.createTree();
-        tree.addTreeSelectionListener(e -> {
-            DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-            if (!node.getUserObject().equals("车型")) {
-                String name = (String) node.getUserObject();
-                Data[] data;
-                HashMap<String, Integer> performances = new HashMap<String, Integer>();
-                if (node.getLevel() == 1) {
-                    //品牌名
-                    performances = getNodes("setConfig/result.xml", "/tree/brand[@name='" + name + "']", true);
-                } else if (node.getLevel() == 2) {
-                    //车型名
-                    performances = getNodes("setConfig/result.xml", "/tree/brand/type[@name='" + name + "']", false);
+                    }
                     data = new Data[performances.size()];
-
+                    int i = 0;
+                    for (Iterator<Map.Entry<String, Integer>> iterator = performances.entrySet().iterator(); iterator.hasNext(); ) {
+                        Map.Entry<String, Integer> it = iterator.next();
+                        data[i] = new Data(it.getKey(), it.getValue().toString());
+                        i++;
+                    }
+                    JFreeChart chart = pie.createChart(name, data);
+                    ChartPanel chartPanel = new ChartPanel(chart);
+                    chartPanel.addChartMouseListener(new MyChartMouseListener(name, node.getLevel()));
+                    chartPanel.setBackground(new Color(89, 194, 230));
+                    if (testXMLView.this.chartPanel != null) {
+                        testXMLView.this.remove(testXMLView.this.chartPanel);
+                    }
+                    testXMLView.this.chartPanel = chartPanel;
+                    testXMLView.this.add(chartPanel, BorderLayout.CENTER);
                 }
-                data = new Data[performances.size()];
-                int i = 0;
-                for (Iterator<Map.Entry<String, Integer>> iterator = performances.entrySet().iterator(); iterator.hasNext(); ) {
-                    Map.Entry<String, Integer> it = iterator.next();
-                    data[i] = new Data(it.getKey(), it.getValue().toString());
-                    i++;
-                }
-                JFreeChart chart = pie.createChart(name, data);
-                ChartPanel chartPanel = new ChartPanel(chart);
-                chartPanel.addChartMouseListener(new MyChartMouseListener(name, node.getLevel()));
-                chartPanel.setBackground(new Color(89, 194, 230));
-                if(this.chartPanel != null){
-                    this.remove(this.chartPanel);
-                }
-                this.chartPanel = chartPanel;
-                this.add(chartPanel, BorderLayout.CENTER);
             }
         });
 
