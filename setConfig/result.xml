@@ -3,21 +3,6 @@
 <tree> 
   <brand name="比亚迪"> 
     <performance name="内饰" weight="12;">1</performance>  
-    <performance name="座椅" weight="12;">1</performance>  
-    <performance name="底盘" weight="49;">1</performance>  
-    <performance name="噪音" weight="55;55;58;58;">4</performance>  
-    <performance name="外观" weight="95;">1</performance>  
-    <performance name="价格" weight="99;">1</performance>
-  </brand>  
-  <brand name="奇瑞"> 
-    <performance name="车型" weight="47;">1</performance> 
-  </brand>  
-  <brand name="长安"> 
-    <type name="逸动"> 
-      <performance name="内饰" weight="54;">1</performance> 
-    </type> 
-  </brand>  
-  <brand name="景逸"> 
-    <performance name="性能" weight="64;">1</performance> 
+    <performance name="座椅" weight="12;">1</performance>
   </brand> 
 </tree>
