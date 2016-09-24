@@ -18,6 +18,7 @@
        	<word code="JG">价格</word>
        	<word code="JQ">价钱</word>
        	<word code="JW">价位</word>
+       	<word code="CB">成本</word>
     </performance>  
     <performance name="外观" table="Appearance">
 		<word code="WG">外观</word>
@@ -37,7 +38,8 @@
 	 <performance name="空间" table="Space">
        	<word code="KJ">空间</word>
        	<word code="RJ">容积</word>
-       	<word code="RL">容量</word>
+       	<word code="HPKJ">后排空间</word>
+       	<word code="QPKJ">前排空间</word>
     </performance>
 	<performance name="售后" table="customerService">
        	<word code="WX">维修</word>
@@ -78,9 +80,7 @@
 		<word code="CS">车身</word>
 		<word code="SR">散热</word>
 		<word code="SJ">设计</word>
- 	</performance>
-	<performance name="随车工具" table="Vehicletool">
-		<word code="SCGJ">随车工具</word>
+		<word code="XJB">性价比</word>
  	</performance>
 	<performance name="底盘" table="Chassis">
 		<word code="DP">底盘</word>
@@ -157,6 +157,7 @@
 		<word code="BSX">变速箱</word>
 		<word code="BS">变速</word>
 		<word code="D">档</word>
+		<word code="GD">挂档</word>
  	</performance>
 	<performance name="防死锁刹车系统" table="ABS">
 		<word code="FSSSCXT">防死锁刹车系统</word>
@@ -234,6 +235,7 @@
 		<word code="QCDHXT">汽车导航系统</word>
 		<word code="GPS">GPS</word>
 		<word code="QQDWXT">全球定位系统</word>
+		<word code="QH">导航</word>
  	</performance>
 	<performance name="车身电子稳定系统" table="ESP">
 		<word code="CSDZWDXT">车身电子稳定系统</word>
@@ -393,6 +395,8 @@
 		<word code="NS">内饰</word>
 		<word code="CN">车内</word>
 		<word code="NB">内部</word>
+		<word code="ZS">装饰</word>
+		<word code="GY">工艺</word>
  	</performance>  
 </words>
 

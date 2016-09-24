@@ -252,6 +252,7 @@ public class infoAnalysis_view extends JPanel implements ActionListener {
                 de = new extract_de();
                 de.setFlag(true);
                 new Thread(de).start();
+                              
                 common.thread_ex.put("th", de);
 
             }
@@ -264,6 +265,7 @@ public class infoAnalysis_view extends JPanel implements ActionListener {
 
             extract_de de = common.thread_ex.get("th");
             de.stopCurrentThread();
+            
 
             flush_view fv = common.thread_fl.get("fl");
             fv.setFlag(false);

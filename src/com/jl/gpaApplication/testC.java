@@ -90,6 +90,7 @@ public class testC implements Runnable{
 			 negative4.add("模仿");
 			 negative4.add("低端");
 			 negative4.add("保守");
+			 negative4.add("抄袭");
 			 System.out.println("polar4");
 			 Polarity po4=new Polarity(name4, positive4, negative4);
 			 Thread a4=new Thread(po4);
@@ -229,9 +230,9 @@ public class testC implements Runnable{
 			 positive13.add("漂亮") ;
 			 positive13.add("精细") ;
 			 positive13.add("提升") ;
+			 positive13.add("高") ;
 			 positive13.add("大") ;
 			 positive13.add("高端") ;
-			 positive13.add("高");
 			 negative13.add("轻");
 			 negative13.add("薄");
 			 negative13.add("下降");
@@ -243,20 +244,7 @@ public class testC implements Runnable{
 			 Thread a13=new Thread(po13);
 			 a13.start();		 
 			 a13.join();
-			 
-			 String  name14="Vehicletool";   //创建性能指标表名
-			 ArrayList positive14=new ArrayList();   //指标中正极性词
-			 ArrayList negative14=new ArrayList();   //指标中负极性词
-			 positive14.add("齐全") ;
-			 positive14.add("完备");
-			 negative14.add("缺少");
-			 negative14.add("不齐全");
-			 System.out.println("polar14");
-			 Polarity po14=new Polarity(name14, positive14, negative14);
-			 Thread a14=new Thread(po14);
-			 a14.start();		 
-			 a14.join();
-			 
+			 		 
 		  
 		 String  name15="Chassis";   //创建性能指标表名    底盘
 		 ArrayList positive15=new ArrayList();   //指标中正极性词
@@ -322,6 +310,8 @@ public class testC implements Runnable{
 		 negative19.add("垃圾");
 		 negative19.add("烂");
 		 negative19.add("有缺陷");
+		 negative19.add("断裂");
+		 negative19.add("问题");
 		 negative19.add("支撑力差");
 		 System.out.println("polar19");
 		 Polarity po19=new Polarity(name19, positive19, negative19);
@@ -424,7 +414,9 @@ public class testC implements Runnable{
 		 positive25.add("流畅") ;
 		 positive25.add("顺畅") ;
 		 negative25.add("少");
+		 negative25.add("不易");
 		 negative25.add("顿挫");
+		 negative25.add("难");
 		 System.out.println("polar25");
 		 Polarity po25=new Polarity(name25, positive25, negative25);
 		 Thread a25=new Thread(po25);
@@ -641,7 +633,9 @@ public class testC implements Runnable{
 			 ArrayList positive41=new ArrayList();   //指标中正极性词
 			 ArrayList negative41=new ArrayList();   //指标中负极性词
 			 positive41.add("稳定") ;
-			 negative41.add("不稳定");
+			 positive41.add("流畅") ;
+			 negative41.add("不流畅");
+			 negative41.add("卡");
 			 System.out.println("polar41");
 			 Polarity po41=new Polarity(name41, positive41, negative41);
 			 Thread a41=new Thread(po41);
@@ -946,6 +940,7 @@ public class testC implements Runnable{
 			 negative65.add("容易坏");
 			 negative65.add("漏电");
 			 negative65.add("出问题");
+			 negative65.add("硬伤");
 			 System.out.println("polar65");
 			 Polarity po65=new Polarity(name65, positive65, negative65);
 			 Thread a65=new Thread(po65);
@@ -1058,6 +1053,7 @@ public class testC implements Runnable{
 			 positive73.add("大") ;
 			 negative73.add("旧");
 			 negative73.add("小") ;
+			 negative73.add("丢人") ;
 			 System.out.println("polar73");
 			 Polarity po73=new Polarity(name73, positive73, negative73);
 			 Thread a73=new Thread(po73);

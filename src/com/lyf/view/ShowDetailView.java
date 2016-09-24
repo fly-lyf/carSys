@@ -55,7 +55,7 @@ public class ShowDetailView extends JFrame implements ActionListener {
         tab.setVisible(true);
         jp.setViewportView(jtxt);
         jp.setVisible(true);
-        jp.setPreferredSize(new Dimension(700, 400));
+        jp.setPreferredSize(new Dimension(700, 150));
 
         headLabel.setFont(MyTools.f5);
         headLabel.setForeground(Color.WHITE);
@@ -63,7 +63,7 @@ public class ShowDetailView extends JFrame implements ActionListener {
         headPane.setLayout(new FlowLayout(FlowLayout.CENTER));
         headPane.setBackground(new Color(89, 194, 230));
 
-        this.setSize(800, 800);
+        this.setSize(600, 600);
 //        this.setLocationRelativeTo(null);
 //        this.setModal(true);
         this.setTitle(type + "负面信息详情");

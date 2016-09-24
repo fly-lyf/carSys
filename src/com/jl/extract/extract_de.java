@@ -25,7 +25,7 @@ import com.jl.view.infoAnalysis_view;
 
 import edu.fudan.util.exception.LoadModelException;
 
-public class extract_de implements Runnable{
+public class extract_de extends Thread{
    
 	private volatile boolean flag;  //设置以便临时中断分类
 
@@ -116,14 +116,14 @@ public class extract_de implements Runnable{
 				 try{
 				 String newSen1=newSen.replaceAll(" ", "");
 				 double fo_quan=1.0;
-				    int no=newSen1.indexOf("没有");    //查看句子中是否带有否定词“不”
+				    int no=newSen1.indexOf("不");    //查看句子中是否带有否定词“不”
 				    int noh=newSen1.indexOf("不太");
-				    if(noh!=-1){
+				    if(noh!=-1&&Math.abs(no-m)<6){
 				    	fo_quan=-0.5;
 				    }
-				    if(no!=-1){
+				    if(no!=-1&&Math.abs(no-m)<6){
 				    	fo_quan=-1;
-				    }			 
+				    }
 				 DepParser de=new DepParser();
 				 String tag=(String)xinneng.get(y);   //评价的具体产品属性
 					//句法分析
@@ -163,12 +163,12 @@ public class extract_de implements Runnable{
 			    try{
 				    String newSen1=newSen.replaceAll(" ", "");
 				    double fo_quan=1.0;
-				    int no=newSen1.indexOf("没有");    //查看句子中是否带有否定词“不”	
+				    int no=newSen1.indexOf("不");    //查看句子中是否带有否定词“不”	
 				    int noh=newSen1.indexOf("不太");
-				    if(noh!=-1){
+				    if(noh!=-1&&Math.abs(no-m)<6){   //评价词和否定词之间的距离小于6个字符才被认为有效
 				    	fo_quan=-0.5;
 				    }
-				    if(no!=-1){
+				    if(no!=-1&&Math.abs(no-m)<6){
 				    	fo_quan=-1;
 				    }
 				    DepParser de=new DepParser();

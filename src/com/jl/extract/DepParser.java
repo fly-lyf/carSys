@@ -26,9 +26,9 @@ public class DepParser {
 	 */
 	public static void main(String[] args) throws Exception {
 		//parser = new JointParser("models/dep.m");
-		String word = " 铃木雨燕    特点：外形时尚可适当改装、油耗低、保值率高";
+		String word = "比亚迪2.0 是老马自达的发动机 质量稳定 使用成本低。";
 		DepParser de = new DepParser();
-		System.out.println(de.deparser(word, "油耗"));
+		System.out.println(de.deparser(word, "成本"));
 	}
 
 
@@ -52,12 +52,19 @@ public class DepParser {
 		
 		if (length > 1) {
 			  
+			
 			  //使用fudan Parser处理
 			   for (int i = 0; i < bb.length; i++) {
 					if(bb[i].equals("核心词")){
 						flag1=i;
-						if(cc[i].equals("形容词")||cc[i].equals("形谓词")||cc[i].equals("副词")){					
-							return dd[i];
+						if(cc[i].equals("形容词")||cc[i].equals("形谓词")||cc[i].equals("副词")||cc[i].equals("动词")){	
+							  int ih=sen.indexOf(keyword);
+							  int xh=sen.indexOf(dd[i]);
+							  if(Math.abs(ih-xh)<5)
+							   {
+								  return dd[i];
+							   }
+														
 						}
 					}
 				}
@@ -66,9 +73,9 @@ public class DepParser {
 			   List  ll=HanLP.segment(sen);
 			   for (int i = 0; i < ll.size(); i++) {
 				 Term ss=(Term) ll.get(i);
-				// System.out.println(ss+"");
+				 // System.out.println(ss+"");
 				 String[] gg=(ss+"").split("\\/");
-				if (gg[1].equals("a")||gg[1].equals("ad")||gg[1].equals("ag")||gg[1].equals("al")||gg[1].equals("z")||gg[1].equals("zg")||gg[1].equals("nz")||gg[1].equals("vl")||gg[1].equals("vi")){
+				if (gg[1].equals("a")||gg[1].equals("ad")||gg[1].equals("ag")||gg[1].equals("al")||gg[1].equals("z")||gg[1].equals("zg")||gg[1].equals("nz")||gg[1].equals("vl")||gg[1].equals("vi")||gg[1].equals("v")){
 					al.add(i);
 					
 				 }
@@ -125,7 +132,7 @@ public class DepParser {
 			// DependencyTree tree = parser.parse2T(s[0],s[1]);
 			// System.out.println(tree.toString());
 			String stree = parser.parse2String(s[0], s[1], true);
-		   // System.out.println(stree);
+		    //System.out.println(stree);
 			result = stree;
 		} catch (Exception e) {
 			e.printStackTrace();

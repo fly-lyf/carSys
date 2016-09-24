@@ -1,6 +1,8 @@
 package com.lyf.view;
 
 import com.jl.extract.extract_de;
+import com.jl.tools.MyTools;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -42,6 +44,7 @@ public class MyTreeList{
         renderer.setLeafIcon(img);
         renderer.setClosedIcon(img);
         renderer.setOpenIcon(img);
+        renderer.setFont(MyTools.f2);
         tree.setCellRenderer(renderer);
         return tree;
 
