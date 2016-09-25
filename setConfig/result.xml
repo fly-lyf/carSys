@@ -2,6 +2,78 @@
 
 <tree> 
   <brand name="比亚迪"> 
-    <performance name="汽车导航系统" weight="31;31;">2</performance> 
+    <performance name="汽车导航系统" weight="31;31;">2</performance>  
+    <performance name="电池" weight="33;">1</performance>  
+    <performance name="售后" weight="52;393;626;">3</performance>  
+    <performance name="品牌" weight="53;576;">2</performance>  
+    <performance name="噪音" weight="56;88;92;98;115;352;352;355;355;402;472;498;777;892;">14</performance>  
+    <performance name="价格" weight="64;107;153;153;464;826;">6</performance>  
+    <performance name="外观" weight="66;149;156;317;637;678;681;910;">8</performance>  
+    <performance name="性能" weight="76;281;393;740;744;745;746;747;748;749;750;">11</performance>  
+    <performance name="动力" weight="95;402;892;">3</performance>  
+    <performance name="制动" weight="123;306;307;770;771;">5</performance>  
+    <performance name="车轮" weight="127;">1</performance>  
+    <performance name="车型" weight="241;445;">2</performance>  
+    <performance name="内饰" weight="246;327;">2</performance>  
+    <type name="秦"> 
+      <performance name="外观" weight="300;398;399;492;493;645;880;">7</performance> 
+    </type>  
+    <performance name="底盘" weight="348;">1</performance>  
+    <performance name="标志" weight="760;760;909;">3</performance>  
+    <performance name="空间" weight="888;">1</performance>  
+    <performance name="整车参数" weight="916;">1</performance>
+  </brand>  
+  <brand name="众泰"> 
+    <type name="Z300"> 
+      <performance name="整车参数" weight="59;">1</performance>  
+      <performance name="空间" weight="59;59;">2</performance> 
+    </type> 
+  </brand>  
+  <brand name="马自达"> 
+    <performance name="性能" weight="85;">1</performance> 
+  </brand>  
+  <brand name="奔驰"> 
+    <performance name="品牌" weight="164;258;535;">3</performance> 
+  </brand>  
+  <brand name="奇瑞"> 
+    <performance name="外观" weight="186;">1</performance>  
+    <performance name="车型" weight="346;676;756;">3</performance> 
+  </brand>  
+  <brand name="奥迪"> 
+    <performance name="内饰" weight="299;">1</performance> 
+  </brand>  
+  <brand name="景逸"> 
+    <performance name="整车参数" weight="353;354;448;552;697;">5</performance> 
+  </brand>  
+  <brand name="长城"> 
+    <performance name="动力" weight="402;892;">2</performance> 
+  </brand>  
+  <brand name="五菱"> 
+    <performance name="价格" weight="470;">1</performance> 
+  </brand>  
+  <brand name="特斯拉"> 
+    <type name="MODEL"> 
+      <performance name="价格" weight="530;">1</performance> 
+    </type> 
+  </brand>  
+  <brand name="三菱"> 
+    <performance name="油耗" weight="556;">1</performance> 
+  </brand>  
+  <brand name="现代"> 
+    <type name="悦动"> 
+      <performance name="外观" weight="680;">1</performance> 
+    </type> 
+  </brand>  
+  <brand name="别克"> 
+    <type name="凯越"> 
+      <performance name="空间" weight="721;729;839;842;">4</performance>  
+      <performance name="油耗" weight="721;729;839;842;">4</performance> 
+    </type> 
+  </brand>  
+  <brand name="吉利"> 
+    <performance name="外观" weight="909;">1</performance> 
+  </brand>  
+  <brand name="长安"> 
+    <performance name="外观" weight="909;">1</performance> 
   </brand> 
 </tree>
